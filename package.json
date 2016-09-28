@@ -1,0 +1,24 @@
+{
+  "name": "meete",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init": "typings install",
+    "dev": "webpack -d --watch",
+    "build": "webpack -p"
+  },
+  "author": "tochur",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.3.1",
+	"react-dom": "^15.3.1",
+    "react-bootstrap": "^0.30.3",
+    "react-router": "^2.8.1",
+    "webpack": "^1.13.2"
+  },
+  "devDependencies": {
+    "source-map-loader": "^0.1.5",
+    "ts-loader": "^0.8.2"
+  }
+}

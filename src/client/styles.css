@@ -1,0 +1,64 @@
+.weeklyCalendarGrid{
+      display: grid;
+      grid-template-columns: 100px auto;
+	grid-template-rows: 1% auto;
+}
+
+.weeklyCalendarEtiquete{
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 1;
+      grid-row-end: 2;
+}
+
+.weeklyCalendarHours{
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 2;
+      grid-row-end: 3;
+}
+
+.weeklyCalendarHeaderDays{
+      /*container props*/
+      display: flex;
+
+      /*item props*/
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      background-color: green;
+}
+
+.weeklyCalendarHeaderDay{
+      flex-grow: 1;
+}
+
+.weeklyCalendarFields{
+      /*container props*/
+      display: grid;
+      grid-template-columns: repeat(7, auto);
+	grid-template-rows: 1 auto;
+
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 2;
+      grid-row-end: 3;
+
+      background-color: red;
+}
+
+.weeklyCalendarFieldsDayFlex{
+      /*container props*/
+      display: flex;
+      flex-direction: column;
+}
+
+.weeklyCalendarFieldsFlex{
+      display: flex;
+      flex-direction: row;
+}
+
+.weeklyCalendarField{
+      flex-grow: 1;
+}
