@@ -48,3 +48,9 @@ interface IWeeklyCalendarHourFieldProps{
       startDate: Date,
       endDate: Date
 }
+
+
+/**************/
+interface IWeeklyCalendarHeaderProps{
+      switchWeekHandler: Function
+}
