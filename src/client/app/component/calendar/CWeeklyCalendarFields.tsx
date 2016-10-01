@@ -7,7 +7,7 @@ class CWeeklyCalendarFields extends React.Component<IWeeklyCalendarFields, {}> {
       renderHourFields(intervals: number, dayPosition: number) {
 		return (
 			<div key = {dayPosition} className='weeklyCalendarFieldsDayFlex'>
-				<CWeeklyCalendarFieldsDay 
+				<CWeeklyCalendarFieldsDay
 					intervals = {intervals} 
 					dayPosition={dayPosition} 
 					eventRepetition={this.props.eventRepetition}

@@ -25,15 +25,16 @@ class CWeeklyCalendarField extends React.Component<IWeeklyCalendarFieldProps, {}
 	render() {
             let fieldColor: string = UserPreferencesInstance.getWeeklyCalendarFieldColor(this.props.eventRepetition);
             return (
-                  <div 
+                  <div
                         onMouseDown={this.fireMouseDown}
                         onMouseUp={this.fireMouseUp}
                         onMouseOver={this.fireMouseOver}
 
                         style={{
-                              background: fieldColor
+                              backgroundColor: fieldColor,
                         }}
                         >
+                        .
                   </div>
             );
       }

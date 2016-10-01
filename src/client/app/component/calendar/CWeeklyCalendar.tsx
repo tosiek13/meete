@@ -6,7 +6,6 @@ import { CWeeklyCalendarHours } from './CWeeklyCalendarHours';
 import { CWeeklyCalendarFields } from './CWeeklyCalendarFields';
 import { UWeeklyCalendar, UCalendar, Range} from './../../utils/calendarUtils';
 import { DTOEvent } from './../../dom/DTOEvent';
-import { SelectionEngine } from './../../dom/engine/SelectionEngine';
 import { EventRepetition } from './../../dom/enums/EventRepetition';
 
 class CWeeklyCalendar extends React.Component<IWeeklyCalendarProps, {}> {
@@ -44,7 +43,7 @@ class CWeeklyCalendar extends React.Component<IWeeklyCalendarProps, {}> {
 				</CWeeklyCalendarHours>
 				<CWeeklyCalendarHeaderDays weekStartTime = {this.weekStartTime}>
 				</CWeeklyCalendarHeaderDays>
-				<CWeeklyCalendarFields intervals = {this.intervals} fieldClickHandlerSet = {this.fieldClickHandlerSet} eventRepetition={EventRepetition.WEEKLY}>
+				<CWeeklyCalendarFields intervals = {this.intervals} fieldClickHandlerSet = {this.fieldClickHandlerSet} eventRepetition={3}>
 				</CWeeklyCalendarFields>
 			</div>
 		);

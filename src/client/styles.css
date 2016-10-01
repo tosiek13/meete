@@ -68,3 +68,16 @@ body{
 .weeklyCalendarField{
       flex-grow: 1;
 }
+
+.flexContainer{
+      display: flex;
+}
+
+.flexChild{
+     flex-grow: 1;
+}
+
+.flexBoth{
+     display: flex;
+     flex-grow: 1;
+}
