@@ -4,8 +4,10 @@ import * as React from "react";
 import { CWeeklyCalendarHeaderDays } from './CWeeklyCalendarHeaderDays';
 import { CWeeklyCalendarHours } from './CWeeklyCalendarHours';
 import { CWeeklyCalendarFields } from './CWeeklyCalendarFields';
-import { UWeeklyCalendar, UCalendar } from './../../utils/calendarUtils';
-import { DTOEvent } from './../../dom/DTOEvent'; 
+import { UWeeklyCalendar, UCalendar, Range} from './../../utils/calendarUtils';
+import { DTOEvent } from './../../dom/DTOEvent';
+import { SelectionEngine } from './../../dom/engine/SelectionEngine';
+import { EventRepetition } from './../../dom/enums/EventRepetition';
 
 class CWeeklyCalendar extends React.Component<IWeeklyCalendarProps, {}> {
 	weekStartTime: number;
@@ -14,9 +16,15 @@ class CWeeklyCalendar extends React.Component<IWeeklyCalendarProps, {}> {
 	intervals: number;
 	intervalLength_ms: number;
 
-	constructor(props: IWeeklyCalendarProps){
+	fieldClickHandlerSet: IWeeklyCalendarFieldHandlersSet = {
+		onMouseDown: this.handleOnMouseDown.bind(this),
+		onMouseUp: this.handleOnMouseUp.bind(this),
+		onMouseOver: this.handleOnMouseOver.bind(this)
+	}
+
+	constructor(props: IWeeklyCalendarProps) {
 		super(props);
-		this.handleFieldSelect = this.handleFieldSelect.bind(this);
+		this.getFieldRange = this.getFieldRange.bind(this);
 	}
 
 	render() {
@@ -31,26 +39,36 @@ class CWeeklyCalendar extends React.Component<IWeeklyCalendarProps, {}> {
 			<div className='weeklyCalendarGrid'>
 				<div className='weeklyCalendarEtiquete'>
 					Etiquete
-				</div>	
+				</div>
 				<CWeeklyCalendarHours startTime = { this.firstDayStartTime }  intervals = {this.intervals} intervalLength = {this.intervalLength_ms}>
 				</CWeeklyCalendarHours>
 				<CWeeklyCalendarHeaderDays weekStartTime = {this.weekStartTime}>
 				</CWeeklyCalendarHeaderDays>
-				<CWeeklyCalendarFields intervals = {this.intervals} fieldClickHandler = {this.handleFieldSelect}>
+				<CWeeklyCalendarFields intervals = {this.intervals} fieldClickHandlerSet = {this.fieldClickHandlerSet} eventRepetition={EventRepetition.WEEKLY}>
 				</CWeeklyCalendarFields>
 			</div>
 		);
 	}
 
-	handleFieldSelect(dayPosition: number, hourPosition: number){
+	getFieldRange(dayPosition: number, hourPosition: number) {
 		let daysMiliseconds: number = UCalendar.getMilisecondsInDay(dayPosition);
-		let hour_ms: number =  UCalendar.getMilisecondsInHour(hourPosition / this.props.fieldsInHour);
+		let hour_ms: number = UCalendar.getMilisecondsInHour(hourPosition / this.props.fieldsInHour);
 		let startTimeMiliseconds: number = this.firstDayStartTime + daysMiliseconds + hour_ms;
 		let endTimeMiliseconds: number = startTimeMiliseconds + UCalendar.getMilisecondsInHour(1 / this.props.fieldsInHour);
 
 		let event: DTOEvent = new DTOEvent(1, startTimeMiliseconds, endTimeMiliseconds);
 
-		console.log("Clicke field with specified data: " + new Date(startTimeMiliseconds) + " - " + new Date(endTimeMiliseconds));
+		return new Range(startTimeMiliseconds, endTimeMiliseconds);
+	}
+
+	handleOnMouseDown(dayPosition: number, hourPosition: number) {
+		this.getFieldRange(dayPosition, hourPosition);
+	}
+	handleOnMouseUp(dayPosition: number, hourPosition: number) {
+		this.getFieldRange(dayPosition, hourPosition);
+	}
+	handleOnMouseOver(dayPosition: number, hourPosition: number) {
+		this.getFieldRange(dayPosition, hourPosition);
 	}
 }
 

@@ -1,5 +1,6 @@
 export enum EventRepetition {
     NO,
-    DAILY,
-    WEEKLY
+    WEEKLY,
+    MONTHLY,
+    ANNUALY
 }

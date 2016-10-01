@@ -1,3 +1,10 @@
+declare enum EventRepetition {
+    NO,
+    WEEKLY,
+    MONTHLY,
+    ANNUALY
+}
+
 interface IWeeklyCalendarProps {
       date: Date,
       startDay: number,
@@ -9,18 +16,21 @@ interface IWeeklyCalendarProps {
 interface IWeeklyCalendarFieldProps {
       dayPosition: number, 
       hourPosition: number,
-      fieldClickHandler: Function
+      eventRepetition: EventRepetition,
+      fieldClickHandlerSet: IWeeklyCalendarFieldHandlersSet
 }
 
 interface IWeeklyCalendarFields {
       intervals: number,
-      fieldClickHandler: Function
+      eventRepetition: EventRepetition,
+      fieldClickHandlerSet: IWeeklyCalendarFieldHandlersSet
 }
 
 interface IWeeklyCalendarFieldsDayProps {
       intervals: number,
       dayPosition: number,
-      fieldClickHandler: Function
+      eventRepetition: EventRepetition,
+      fieldClickHandlerSet: IWeeklyCalendarFieldHandlersSet
 }
 
 interface CWeeklyCalendarHeaderDayField {
@@ -47,4 +57,21 @@ interface IWeeklyCalendarHoursProps{
 interface IWeeklyCalendarHourFieldProps{
       startDate: Date,
       endDate: Date
+}
+
+interface IWeeklyCalendarFieldHandlersSet{
+      onMouseDown: Function;
+      onMouseUp: Function;
+      onMouseOver: Function;
+}
+
+interface IRange {
+      startTime: number;
+      endTime: number;
+}
+
+
+/**************/
+interface IWeeklyCalendarHeaderProps{
+      switchWeekHandler: Function
 }
