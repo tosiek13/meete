@@ -8,7 +8,7 @@ class CWeeklyCalendarHeaderDayField extends React.Component<IWeeklyCalendarHeade
                   <div className='weeklyCalendarHeaderDay'>
                         {this.props.dayName}
                         <div>
-                              {this.props.date}.{this.props.month}
+                              {this.props.date}.{this.props.month + 1}
                         </div>
                   </div>
             );
