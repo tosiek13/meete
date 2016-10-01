@@ -5,16 +5,16 @@ import * as React from "react";
 class CWeeklyCalendarField extends React.Component<IWeeklyCalendarFieldProps, {}> {
       constructor(props: IWeeklyCalendarFieldProps){
             super(props);
-            this.printInfo = this.printInfo.bind(this);
+            this.fireClickEvent = this.fireClickEvent.bind(this);
       }
       
-      printInfo(){
-            console.log("Hit field: " + this.props.dayPosition + ", " + this.props.hourPosition);
+      fireClickEvent(){
+            this.props.fieldClickHandler(this.props.dayPosition, this.props.hourPosition);
       }
 
 	render() {
             return (
-                  <div onClick={this.printInfo}>
+                  <div onClick={this.fireClickEvent}>
                         FIELD
                   </div>
             );

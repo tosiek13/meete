@@ -4,32 +4,53 @@ import * as React from "react";
 import { CWeeklyCalendarHeaderDays } from './CWeeklyCalendarHeaderDays';
 import { CWeeklyCalendarHours } from './CWeeklyCalendarHours';
 import { CWeeklyCalendarFields } from './CWeeklyCalendarFields';
-import { UWeeklyCalendar } from './../../utils/calendarUtils';
+import { UWeeklyCalendar, UCalendar } from './../../utils/calendarUtils';
+import { DTOEvent } from './../../dom/DTOEvent'; 
 
-class CWeeklyCalendar extends React.Component<IWeeklyCalendar, {}> {
+class CWeeklyCalendar extends React.Component<IWeeklyCalendarProps, {}> {
+	weekStartTime: number;
+	firstDayStartTime: number;
+	firstDayEndTime: number;
+	intervals: number;
+	intervalLength_ms: number;
+
+	constructor(props: IWeeklyCalendarProps){
+		super(props);
+		this.handleFieldSelect = this.handleFieldSelect.bind(this);
+	}
+
 	render() {
-		let startDate: Date = UWeeklyCalendar.getStartDate(this.props.date, 1);
-		let begDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(),
-			8, 0, 0, 0);
-		let endDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate(),
-			20, 0, 0, 0);
-		let intervalInHours = 2;
-		let intervals = UWeeklyCalendar.getIntervalsAmount(intervalInHours, endDate, begDate);
-		let intervalLength = 1 / intervalInHours;
+		this.weekStartTime = UWeeklyCalendar.getStartTime(this.props.date, this.props.startDay);
+		this.firstDayStartTime = this.weekStartTime + UCalendar.getMilisecondsInHour(this.props.startHour);
+		this.firstDayEndTime = this.weekStartTime + UCalendar.getMilisecondsInHour(this.props.endHour);
+
+		this.intervals = UWeeklyCalendar.getIntervalsAmount(this.firstDayStartTime, this.firstDayEndTime, this.props.fieldsInHour);
+		this.intervalLength_ms = 1 / this.props.fieldsInHour;
 
 		return (
 			<div className='weeklyCalendarGrid'>
 				<div className='weeklyCalendarEtiquete'>
 					Etiquete
 				</div>	
-				<CWeeklyCalendarHours startDate = {begDate} endDate = { endDate } intervals = {intervals} intervalLength = {intervalLength}>
+				<CWeeklyCalendarHours startTime = { this.firstDayStartTime }  intervals = {this.intervals} intervalLength = {this.intervalLength_ms}>
 				</CWeeklyCalendarHours>
-				<CWeeklyCalendarHeaderDays startDate = {startDate}>
+				<CWeeklyCalendarHeaderDays weekStartTime = {this.weekStartTime}>
 				</CWeeklyCalendarHeaderDays>
-				<CWeeklyCalendarFields intervals = {intervals}>
+				<CWeeklyCalendarFields intervals = {this.intervals} fieldClickHandler = {this.handleFieldSelect}>
 				</CWeeklyCalendarFields>
 			</div>
 		);
+	}
+
+	handleFieldSelect(dayPosition: number, hourPosition: number){
+		let daysMiliseconds: number = UCalendar.getMilisecondsInDay(dayPosition);
+		let hour_ms: number =  UCalendar.getMilisecondsInHour(hourPosition / this.props.fieldsInHour);
+		let startTimeMiliseconds: number = this.firstDayStartTime + daysMiliseconds + hour_ms;
+		let endTimeMiliseconds: number = startTimeMiliseconds + UCalendar.getMilisecondsInHour(1 / this.props.fieldsInHour);
+
+		let event: DTOEvent = new DTOEvent(1, startTimeMiliseconds, endTimeMiliseconds);
+
+		console.log("Clicke field with specified data: " + new Date(startTimeMiliseconds) + " - " + new Date(endTimeMiliseconds));
 	}
 }
 

@@ -18,7 +18,7 @@ class CWeeklyCalendarHeaderDays extends React.Component<IWeeklyCalendarHeaderPro
 	}
 
 	render() {
-            let startDate = this.props.startDate;
+            let startDate = new Date(this.props.weekStartTime);
 		var dayHeaders: JSX.Element[] = [];
 		for (let i = 0; i < 7; i++) {
 			let date = UCalendar.getNextDay(startDate, i);

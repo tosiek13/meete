@@ -1,19 +1,21 @@
 class UWeeklyCalendar {
       // returns first day
-      static getStartDate(dateToShow:Date, firstWeekDay: number = 0): Date{
+      static getStartTime(dateToShow:Date, firstWeekDay: number = 0): number{
             let dayToShow = dateToShow.getDay();
-            let startDate = dateToShow.getTime();
-            startDate -= UCalendar.getMilisecondsInDay(dateToShow.getDay() - firstWeekDay);
+            let startDateMilis = dateToShow.getTime();
+            startDateMilis -= UCalendar.getMilisecondsInDay(dateToShow.getDay() - firstWeekDay);
+            let firstDayDate = new Date(startDateMilis);
+            let weekStartTime = new Date(firstDayDate.getFullYear(), firstDayDate.getMonth(), firstDayDate.getDate()).getTime();
             
-            return new Date(startDate);
+            return weekStartTime;
       }
 
       static getDayDate(position: number, startDay: number, startDate: Date): Date{
             return  new Date(startDate.getTime() + UCalendar.getMilisecondsInDay(position + startDay));
       }
 
-      static getIntervalsAmount(intervalInHours: number, endDate: Date, startDate: Date): number{
-            return intervalInHours * (endDate.getTime() - startDate.getTime()) / UCalendar.getMilisecondsInHour();
+      static getIntervalsAmount(startDayTime: number, endDayTime: number, fieldsInHour: number): number{
+            return fieldsInHour * (endDayTime - startDayTime) / UCalendar.getMilisecondsInHour();
       }
 }
 
