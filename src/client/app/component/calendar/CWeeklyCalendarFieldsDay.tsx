@@ -1,16 +1,15 @@
 import * as React from "react";
 
-///<reference path='../../../../typings/meete/Calendar.d.ts'/>
+///<reference path='../../../../typings/meete/WeeklyCalendar.d.ts'/>
 import { CWeeklyCalendarField } from './CWeeklyCalendarField';
 
-class CWeeklyCalendarFieldsDay extends React.Component<IWeeklyCalendarFieldsDay, {}> {
+class CWeeklyCalendarFieldsDay extends React.Component<IWeeklyCalendarFieldsDayProps, {}> {
       renderField(hourPosition: number, dayPosition:number, event:Event) {
 		return (
 			<div key={hourPosition * 7 + dayPosition} className='weeklyCalendarField'>
 				<CWeeklyCalendarField 
 					hourPosition={hourPosition} 
 					dayPosition={dayPosition} 
-					event={null}
 					fieldClickHandler={this.props.fieldClickHandler}>
 				</CWeeklyCalendarField>
 			</div>

@@ -1,8 +1,8 @@
 import * as React from "react";
 
-///<reference path='../../../../typings/meete/Calendar.d.ts'/>
+///<reference path='../../../../typings/meete/WeeklyCalendar.d.ts'/>
 
-class CWeeklyCalendarHeaderDayField extends React.Component<IWeeklyCalendarHeaderFieldProps, {}> {
+class CWeeklyCalendarHeaderDayField extends React.Component<IWeeklyCalendarHeaderDayFieldProps, {}> {
 	render() {
             return (
                   <div className='weeklyCalendarHeaderDay'>

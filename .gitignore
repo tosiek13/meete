@@ -27,11 +27,13 @@ coverage
 build/Release
 
 # Dependency directories
-typings/*
 node_modules/*
 jspm_packages
 src/client/public/*
-
+typings/globals/*
+typings/modules/*
+typings/*
+!typings/meete
 # Optional npm cache directory
 .npm
 

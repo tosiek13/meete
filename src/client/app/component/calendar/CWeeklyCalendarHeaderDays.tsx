@@ -1,11 +1,11 @@
 import * as React from "react";
 
-///<reference path='../../../../typings/meete/Calendar.d.ts'/>
+///<reference path='../../../../typings/meete/WeeklyCalendar.d.ts'/>
 import { CWeeklyCalendarHeaderDayField } from './CWeeklyCalendarHeaderDayField';
 import { UCalendar } from './../../utils/calendarUtils';
 import { WeekDays } from './../../dom/enums/Calendar';
 
-class CWeeklyCalendarHeaderDays extends React.Component<IWeeklyCalendarHeaderProps, {}> {
+class CWeeklyCalendarHeaderDays extends React.Component<IWeeklyCalendarHeaderDaysProps, {}> {
       renderDayHeader(dayName: string, date: Date, position: number) {
 		return (
 			<div

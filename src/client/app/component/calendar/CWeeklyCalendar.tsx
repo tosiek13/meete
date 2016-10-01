@@ -1,6 +1,6 @@
 import * as React from "react";
 
-///<reference path='../../../../typings/meete/Calendar.d.ts'/>
+///<reference path='../../../../typings/meete/WeeklyCalendar.d.ts'/>
 import { CWeeklyCalendarHeaderDays } from './CWeeklyCalendarHeaderDays';
 import { CWeeklyCalendarHours } from './CWeeklyCalendarHours';
 import { CWeeklyCalendarFields } from './CWeeklyCalendarFields';
