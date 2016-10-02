@@ -23,7 +23,6 @@ class WeeklyCalendarHeaderStore extends EventEmitter {
       constructor() {
             super();
             this.presentedWeekStartTime = UWeeklyCalendar.getStartTime(new Date(), 1);
-            console.log("Week Start date: " + new Date(this.presentedWeekStartTime));
             registerToDispatcher();
       }
 
@@ -58,9 +57,5 @@ function registerToDispatcher() {
             }
       });
 }
-
-AppDispatcher.getInstance().register(function () {
-
-});
 
 export { WeeklyCalendarHeaderStore };

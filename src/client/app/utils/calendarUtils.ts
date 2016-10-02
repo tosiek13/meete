@@ -4,12 +4,13 @@ class UWeeklyCalendar {
             @firstWeekDay - specifies first Day Of The Week
       */
       static getStartTime(dateToShow:Date, firstWeekDay: number = 0): number{
-            let dayToShow = dateToShow.getDay();
             let startDateMilis = dateToShow.getTime();
-            startDateMilis -= UCalendar.getMilisecondsInDay(dateToShow.getDay() - firstWeekDay);
+            startDateMilis -= UCalendar.getMilisecondsInDay(new Date(startDateMilis).getDay() - firstWeekDay);
+            if(dateToShow.getDay() < firstWeekDay){
+                  startDateMilis -= UCalendar.getMilisecondsInDay(7);
+            }
             let firstDayDate = new Date(startDateMilis);
             let weekStartTime = new Date(firstDayDate.getFullYear(), firstDayDate.getMonth(), firstDayDate.getDate()).getTime();
-            
             return weekStartTime;
       }
 

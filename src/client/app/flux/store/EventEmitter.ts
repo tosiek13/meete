@@ -11,7 +11,8 @@ class EventEmitter {
             if (callBacks) {
                   for (let i = 0; i < callBacks.length; i++) {
                         let callBack = callBacks[i];
-                        callBack.call;
+                        // console.log(callBack);
+                        callBack.call(this);
                   }
             }
       }

@@ -69,9 +69,3 @@ interface IRange {
       startTime: number;
       endTime: number;
 }
-
-
-/**************/
-interface IWeeklyCalendarHeaderProps{
-      switchWeekHandler: Function
-}

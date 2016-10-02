@@ -6,13 +6,7 @@ import { FontAwesomeComponent } from './../FontAwesomeComponent';
 import { WeeklyCalendarHeaderActions } from './../../flux/action/WeeklyCalendarHeaderActions';
 import { WeeklyCalendarHeaderStore } from './../../flux/store/WeeklyCalendarHeaderStore'
 
-class CWeeklyCalendarHeader extends React.Component<IWeeklyCalendarHeaderProps, {}> {
-      constructor(props: IWeeklyCalendarHeaderProps) {
-            super(props);
-            this.fireNextWeek = this.fireNextWeek.bind(this);
-            this.firePrevWeek = this.firePrevWeek.bind(this);
-      }
-
+class CWeeklyCalendarHeader extends React.Component<{}, {}> {
       componentDidMount() {
             WeeklyCalendarHeaderStore.getInstance();
       }

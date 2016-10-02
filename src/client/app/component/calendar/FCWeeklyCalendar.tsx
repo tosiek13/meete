@@ -10,7 +10,6 @@ class FCWeeklyCalendar extends React.Component<{}, {}> {
 
       constructor(){
             super();
-            this.switchWeek = this.switchWeek.bind(this);
             this.update = this.update.bind(this);
       }
 
@@ -29,7 +28,7 @@ class FCWeeklyCalendar extends React.Component<{}, {}> {
 	render() {
 		return (
                   <div className='FCWeeklyCalendar'>
-                        <CWeeklyCalendarHeader switchWeekHandler={this.switchWeek}>
+                        <CWeeklyCalendarHeader>
                         </CWeeklyCalendarHeader>
                         <CWeeklyCalendar
                               date = {this.state.date} 
@@ -44,17 +43,9 @@ class FCWeeklyCalendar extends React.Component<{}, {}> {
 
       update(){
             let newDate = WeeklyCalendarHeaderStore.getInstance().getPresentedWeekStartTime();
-            console.log(newDate);
             this.setState({
-                  date: newDate
+                  date: new Date(newDate)
             });
-      }
-
-      switchWeek(skipAmount: number){
-          /*  let date = this.state.date;
-            this.setState({
-                  date: new Date(date.getTime() + (UCalendar.getMilisecondsInDay(7) * skipAmount))
-            });*/
       }
 }
 
