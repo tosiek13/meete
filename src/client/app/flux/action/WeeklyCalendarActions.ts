@@ -2,7 +2,7 @@ import { AppDispatcher } from './../dispatcher/Dispatcher';
 import { WeeklyCalendarActionID }  from './WeeklyCalendarActionID';
 
 class WeeklyCalendarActions {
-  public  createEvent(startDate: Number, endDate: Number): void {
+  /*public  createEvent(startDate: Number, endDate: Number): void {
     AppDispatcher.getInstance().dispatch({
       actionType: WeeklyCalendarActionID.CREATE_EVENT,
       startDate: Number,
@@ -22,7 +22,7 @@ class WeeklyCalendarActions {
             actionType: WeeklyCalendarActionID.REMEVE_EVENT,
             id: id
       });
-  }
+  }*/
 }
 
 let WeeklyCalendarActionsInstance = new WeeklyCalendarActions();

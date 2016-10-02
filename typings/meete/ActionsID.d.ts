@@ -1,4 +1,8 @@
 declare enum WeeklyCalendarHeaderActionID {
-    NEXT_WEEK,
-    PREVIOUS_WEEK,
+    SWITCH_WEEK
+}
+
+interface WeeklyCalendarHeaderAction {
+    actionType: number,
+    skipWeekAmount: number
 }

@@ -22,7 +22,8 @@ class WeeklyCalendarHeaderStore extends EventEmitter {
 
       constructor() {
             super();
-            this.presentedWeekStartTime = UWeeklyCalendar.getStartTime(new Date());
+            this.presentedWeekStartTime = UWeeklyCalendar.getStartTime(new Date(), 1);
+            console.log("Week Start date: " + new Date(this.presentedWeekStartTime));
             registerToDispatcher();
       }
 
@@ -36,8 +37,7 @@ class WeeklyCalendarHeaderStore extends EventEmitter {
       }
 
       switchWeek(weeksAmount: number) {
-            this.presentedWeekStartTime = UCalendar.getNextDay(new Date(this.presentedWeekStartTime), 7).getTime();
-            console.log(new Date(this.presentedWeekStartTime));
+            this.presentedWeekStartTime = UCalendar.getNextDay(new Date(this.presentedWeekStartTime), weeksAmount * 7).getTime();
       }
 
       /*getters*/
@@ -47,15 +47,12 @@ class WeeklyCalendarHeaderStore extends EventEmitter {
 }
 
 function registerToDispatcher() {
-      AppDispatcher.getInstance().register(function (action: any) {
+      AppDispatcher.getInstance().register(function (action: WeeklyCalendarHeaderAction) {
             let text: string;
             switch (action.actionType) {
-                  case WeeklyCalendarHeaderActionID.NEXT_WEEK:
-                        let weeksAmount: number = action.weeksAmount;
-
-                        WeeklyCalendarHeaderStore.getInstance().switchWeek(weeksAmount);
+                  case WeeklyCalendarHeaderActionID.SWITCH_WEEK:
+                        WeeklyCalendarHeaderStore.getInstance().switchWeek(action.skipWeekAmount);
                         WeeklyCalendarHeaderStore.getInstance().emitChange();
-
                         break;
                   default:
             }

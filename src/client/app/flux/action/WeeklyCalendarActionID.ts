@@ -4,8 +4,7 @@ enum WeeklyCalendarActionID {
 }
 
 enum WeeklyCalendarHeaderActionID {
-    NEXT_WEEK,
-    PREVIOUS_WEEK,
+    SWITCH_WEEK
 }
 
 export { WeeklyCalendarActionID, WeeklyCalendarHeaderActionID}

@@ -1,13 +1,14 @@
-import {Dispatcher} from "flux";
+//mport {Dispatcher} from "flux";
+import * as flux from 'flux';
 
 class AppDispatcher {
-      static dispatcher: Dispatcher<any>;
+      static dispatcher: flux.Dispatcher<WeeklyCalendarHeaderAction>;
 
-      static getInstance(): Dispatcher<any> {
+      static getInstance(): flux.Dispatcher<WeeklyCalendarHeaderAction> {
             if(!this.dispatcher){
-                  this.dispatcher = new Dispatcher();
+                  this.dispatcher = new flux.Dispatcher<WeeklyCalendarHeaderAction>();
             }
-            return this.dispatcher
+            return this.dispatcher;
       }
 }
 
