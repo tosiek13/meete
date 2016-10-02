@@ -1,4 +1,14 @@
 import {Dispatcher} from "flux";
-let DispatcherInstance = new Dispatcher();
 
-export { DispatcherInstance };
+class AppDispatcher {
+      static dispatcher: Dispatcher<any>;
+
+      static getInstance(): Dispatcher<any> {
+            if(!this.dispatcher){
+                  this.dispatcher = new Dispatcher();
+            }
+            return this.dispatcher
+      }
+}
+
+export { AppDispatcher };

@@ -3,4 +3,9 @@ enum WeeklyCalendarActionID {
     REMEVE_EVENT,
 }
 
-export { WeeklyCalendarActionID }
+enum WeeklyCalendarHeaderActionID {
+    NEXT_WEEK,
+    PREVIOUS_WEEK,
+}
+
+export { WeeklyCalendarActionID, WeeklyCalendarHeaderActionID}

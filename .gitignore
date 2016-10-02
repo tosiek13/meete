@@ -36,6 +36,7 @@ typings/*
 !typings/meete
 # Optional npm cache directory
 .npm
+font-awesome.min.css
 
 # Optional REPL history
 .node_repl_history

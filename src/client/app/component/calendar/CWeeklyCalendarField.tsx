@@ -5,24 +5,24 @@ import * as React from "react";
 import { UserPreferencesInstance } from './../../dom/UserPreferences'
 
 class CWeeklyCalendarField extends React.Component<IWeeklyCalendarFieldProps, {}> {
-      constructor(props: IWeeklyCalendarFieldProps){
+      constructor(props: IWeeklyCalendarFieldProps) {
             super(props);
             this.fireMouseDown = this.fireMouseDown.bind(this);
             this.fireMouseUp = this.fireMouseUp.bind(this);
             this.fireMouseOver = this.fireMouseOver.bind(this);
       }
-      
-      fireMouseDown(){
+
+      fireMouseDown() {
             this.props.fieldClickHandlerSet.onMouseDown(this.props.dayPosition, this.props.hourPosition);
       }
-      fireMouseUp(){
+      fireMouseUp() {
             this.props.fieldClickHandlerSet.onMouseUp(this.props.dayPosition, this.props.hourPosition);
       }
-      fireMouseOver(){
+      fireMouseOver() {
             this.props.fieldClickHandlerSet.onMouseOver(this.props.dayPosition, this.props.hourPosition);
       }
 
-	render() {
+      render() {
             let fieldColor: string = UserPreferencesInstance.getWeeklyCalendarFieldColor(this.props.eventRepetition);
             return (
                   <div

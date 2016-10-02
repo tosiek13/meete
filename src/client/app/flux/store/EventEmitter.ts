@@ -1,43 +1,47 @@
 import { LinkedList, Dictionary } from 'typescript-collections';
 
 class EventEmitter {
-      listenersByEventNames: Dictionary<string, LinkedList<Function>>;
+      //listenersByEventNames: Dictionary<string, LinkedList<Function>>;
 
-      constructor(){
-            this.listenersByEventNames = new Dictionary<string, LinkedList<Function>>();
+      listenersByEventNames: { [name: string]: Function[]; } = {
       }
 
       emit(eventName: string): void {
-            let listeners:LinkedList<Function> = this.listenersByEventNames.getValue(eventName);
-            listeners.forEach.call(this);
+            let callBacks: Function[] = this.listenersByEventNames[eventName];
+            if (callBacks) {
+                  for (let i = 0; i < callBacks.length; i++) {
+                        let callBack = callBacks[i];
+                        callBack.call;
+                  }
+            }
       }
 
 
       addListener(eventName: string, listener: Function): ListenerToken {
-            let listeners: LinkedList<Function> = this.listenersByEventNames.getValue(eventName);
-            if(!listeners){
-                  listeners = new LinkedList<Function>();
-                  this.listenersByEventNames.setValue(eventName, listeners);
+            let callBacks: Function[] = this.listenersByEventNames[eventName];
+            if (!callBacks) {
+                  callBacks = [];
             }
-            listeners.add(listener);
+            callBacks.push(listener);
+            this.listenersByEventNames[eventName] = callBacks;
 
             return new ListenerToken(eventName, listener);
       };
 
 
       removeListener(listenerToken: ListenerToken) {
-            let listeners: LinkedList<Function> = this.listenersByEventNames.getValue(listenerToken.eventName);
-            if(listeners){
-                  listeners.remove(listenerToken.listener);     
-            }
+            /* let callBacks: Function[] = this.listenersByEventNames[listenerToken.eventName];
+             if(callBacks){
+                  delete callBacks[listenerToken.listener];     
+             }*/
       };
 }
 
-class ListenerToken{
+class ListenerToken {
       eventName: string;
       listener: Function;
 
-      constructor(eventName: string, listener: Function){
+      constructor(eventName: string, listener: Function) {
             this.eventName = eventName;
             this.listener = listener;
       }

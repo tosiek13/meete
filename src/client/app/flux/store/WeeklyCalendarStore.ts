@@ -1,4 +1,4 @@
-import { DispatcherInstance } from './../dispatcher/Dispatcher';
+import { AppDispatcher } from './../dispatcher/Dispatcher';
 import { EventEmitter, ListenerToken } from './EventEmitter';
 import { WeeklyCalendarActionID } from './../action/WeeklyCalendarActionID';
 import { WeeklyCalendarActions, WeeklyCalendarActionsInstance } from './../action/WeeklyCalendarActions';
@@ -37,7 +37,7 @@ class WeeklyCalendarStore extends EventEmitter {
 }
 
 // Register callback to handle all updates
-DispatcherInstance.register(function (action: any) {
+AppDispatcher.getInstance().register(function (action: any) {
   let text: string;
 
   switch (action.actionType) {

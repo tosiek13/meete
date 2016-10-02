@@ -1,5 +1,8 @@
 class UWeeklyCalendar {
-      // returns first day
+      /* Returns first day(hour 00:00).getTime()
+            @dateToShow - date that will be presented in weeklyCalendar View
+            @firstWeekDay - specifies first Day Of The Week
+      */
       static getStartTime(dateToShow:Date, firstWeekDay: number = 0): number{
             let dayToShow = dateToShow.getDay();
             let startDateMilis = dateToShow.getTime();
@@ -28,6 +31,9 @@ class UCalendar {
             return (3600 * 1000 * hoursAmount);
       }
 
+      /**
+      *@deprecated('use getNextDay(time: number, daysAmount:number = 1): Time instead')
+      **/
       static getNextDay(date: Date, daysAmount: number = 1): Date {
             return new Date(date.getTime() + UCalendar.getMilisecondsInDay(daysAmount));
       }

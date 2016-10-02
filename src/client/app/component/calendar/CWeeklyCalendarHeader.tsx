@@ -3,6 +3,9 @@ import * as React from "react";
 
 ///<reference path='../../../../typings/meete/WeeklyCalendar.d.ts'/>
 import { FontAwesomeComponent } from './../FontAwesomeComponent';
+import { WeeklyCalendarHeaderActions } from './../../flux/action/WeeklyCalendarHeaderActions';
+import { WeeklyCalendarHeaderStore } from './../../flux/store/WeeklyCalendarHeaderStore'
+
 class CWeeklyCalendarHeader extends React.Component<IWeeklyCalendarHeaderProps, {}> {
       constructor(props: IWeeklyCalendarHeaderProps) {
             super(props);
@@ -10,26 +13,30 @@ class CWeeklyCalendarHeader extends React.Component<IWeeklyCalendarHeaderProps, 
             this.firePrevWeek = this.firePrevWeek.bind(this);
       }
 
+      componentDidMount() {
+            WeeklyCalendarHeaderStore.getInstance();
+      }
+
       firePrevWeek() {
-            this.props.switchWeekHandler(-1);
+            WeeklyCalendarHeaderActions.switchWeeks(-1);
       }
 
       fireNextWeek() {
-            this.props.switchWeekHandler(1);
+            WeeklyCalendarHeaderActions.switchWeeks(1);
       }
 
       render() {
             let size = 36;
             return (
                   <div>
-                        <FontAwesomeComponent 
-                              name='angle-left' 
+                        <FontAwesomeComponent
+                              name='angle-left'
                               size='3x'
                               fireClick={this.firePrevWeek}>
                         </FontAwesomeComponent>
                         {'  CHANGE WEEK  '}
-                        <FontAwesomeComponent 
-                              name='angle-right' 
+                        <FontAwesomeComponent
+                              name='angle-right'
                               size='3x'
                               fireClick={this.fireNextWeek}>
                         </FontAwesomeComponent>
