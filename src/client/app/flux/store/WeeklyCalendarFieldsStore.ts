@@ -1,7 +1,6 @@
 import { AppDispatcher } from './../dispatcher/Dispatcher';
 import { EventEmitter, ListenerToken } from './EventEmitter';
 import { WeeklyCalendarFieldActionID } from './../action/WeeklyCalendarActionID';
-import { WeeklyCalendarFieldActions } from './../action/WeeklyCalendarFieldActions';
 import { Dictionary } from 'typescript-collections';
 import { DTOEvent } from './../../dom/DTOEvent';
 
@@ -45,13 +44,14 @@ class WeeklyCalendarFieldsStore extends EventEmitter {
 }
 
 function registerToDispatcher() {
-      AppDispatcher.getInstance().register(function (action: WeeklyCalendarFieldsAction) {
-            let text: string;
+      AppDispatcher.getInstance().register(function (action: WeeklyCalendarFieldAction) {
             switch (action.actionType) {
-                  case WeeklyCalendarHeaderActionID.SWITCH_WEEK:
-                        WeeklyCalendarFieldsStore.getInstance().switchWeek(action.skipWeekAmount);
+                  /*let hourID = action.payload.hourID;
+                  let letDayID = action.payload.dayID;
+                  case WeeklyCalendarFieldActionID.MOUSE_DOWN:
+                        WeeklyCalendarFieldsStore.getInstance().switchWeek(action.presentedWeekStartTime);
                         WeeklyCalendarFieldsStore.getInstance().emitChange();
-                        break;
+                        break;*/
                   default:
             }
       });

@@ -1,7 +1,5 @@
 import { AppDispatcher } from './../dispatcher/Dispatcher';
 import { EventEmitter, ListenerToken } from './EventEmitter';
-import { WeeklyCalendarActionID } from './../action/WeeklyCalendarActionID';
-import { WeeklyCalendarActions, WeeklyCalendarActionsInstance } from './../action/WeeklyCalendarActions';
 import { Dictionary } from 'typescript-collections';
 import { DTOEvent } from './../../dom/DTOEvent';
 
@@ -41,7 +39,7 @@ AppDispatcher.getInstance().register(function (action: any) {
   let text: string;
 
   switch (action.actionType) {
-    case WeeklyCalendarActionID.CREATE_EVENT:
+    /*case WeeklyCalendarActionID.CREATE_EVENT:
       let startDate: number = action.startDate;
       let endDate: number = action.endDate;
 
@@ -58,7 +56,7 @@ AppDispatcher.getInstance().register(function (action: any) {
 
 
 
-    default:
+    default:*/
   }
 });
 

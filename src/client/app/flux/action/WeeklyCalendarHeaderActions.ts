@@ -3,11 +3,12 @@ import { WeeklyCalendarHeaderActionID } from './WeeklyCalendarActionID'
 
 class WeeklyCalendarHeaderActions {
   public static switchWeeks(weeksAmount: number): void {
-
     AppDispatcher.getInstance().dispatch({
-       actionType: 0,
-       skipWeekAmount: weeksAmount
-    });
+       actionType: WeeklyCalendarHeaderActionID.SWITCH_WEEK,
+       payload: {
+         weeksAmount: weeksAmount
+       }
+    } as WeeklyCalendarHeaderAction );
   }
 }
 

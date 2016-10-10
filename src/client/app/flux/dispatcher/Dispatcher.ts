@@ -2,11 +2,11 @@
 import * as flux from 'flux';
 
 class AppDispatcher {
-      static dispatcher: flux.Dispatcher<WeeklyCalendarHeaderAction>;
+      static dispatcher: flux.Dispatcher<Action>;
 
-      static getInstance(): flux.Dispatcher<WeeklyCalendarHeaderAction> {
+      static getInstance(): flux.Dispatcher<Action> {
             if(!this.dispatcher){
-                  this.dispatcher = new flux.Dispatcher<WeeklyCalendarHeaderAction>();
+                  this.dispatcher = new flux.Dispatcher<Action>();
             }
             return this.dispatcher;
       }

@@ -4,5 +4,20 @@ declare enum WeeklyCalendarHeaderActionID {
 
 interface WeeklyCalendarHeaderAction {
     actionType: number,
-    skipWeekAmount: number
+    payload: {
+        weeksAmount: number
+    }
+}
+
+interface WeeklyCalendarFieldAction {
+    actionType: number,
+    payload: {
+        dayID: number,
+        hourID: number
+    }
+}
+
+interface Action {
+    actionType: number,
+    payload: any
 }
