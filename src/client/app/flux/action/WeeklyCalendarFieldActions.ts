@@ -1,8 +1,6 @@
 import { AppDispatcher } from './../dispatcher/Dispatcher';
 import { WeeklyCalendarFieldActionID } from './WeeklyCalendarActionID'
 
-export interface WEEKLY_CALENDAR_FIELD_ACTION { actionType: number; payload: { dayID: number, hourID: number }; }
-
 class WeeklyCalendarFieldActions {
 
   public static mouseDown(dayID: number, hourID: number): void {
@@ -13,7 +11,7 @@ class WeeklyCalendarFieldActions {
         dayID: dayID,
         hourID: hourID
       }
-    });
+    } as WeeklyCalendarFieldAction);
   }
 
   public static mouseUp(dayID: number, hourID: number): void {
@@ -24,7 +22,7 @@ class WeeklyCalendarFieldActions {
         dayID: dayID,
         hourID: hourID
       }
-    });
+    } as WeeklyCalendarFieldAction );
   }
 
   public static mouseOver(dayID: number, hourID: number): void {
@@ -35,7 +33,7 @@ class WeeklyCalendarFieldActions {
         dayID: dayID,
         hourID: hourID
       }
-    });
+    } as WeeklyCalendarFieldAction );
   }
 }
 

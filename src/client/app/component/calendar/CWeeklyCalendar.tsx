@@ -15,12 +15,6 @@ class CWeeklyCalendar extends React.Component<IWeeklyCalendarProps, {}> {
 	intervals: number;
 	intervalLength_ms: number;
 
-	fieldClickHandlerSet: IWeeklyCalendarFieldHandlersSet = {
-		onMouseDown: this.handleOnMouseDown.bind(this),
-		onMouseUp: this.handleOnMouseUp.bind(this),
-		onMouseOver: this.handleOnMouseOver.bind(this)
-	}
-
 	constructor(props: IWeeklyCalendarProps) {
 		super(props);
 		this.getFieldRange = this.getFieldRange.bind(this);
@@ -43,7 +37,7 @@ class CWeeklyCalendar extends React.Component<IWeeklyCalendarProps, {}> {
 				</CWeeklyCalendarHours>
 				<CWeeklyCalendarHeaderDays weekStartTime = {this.weekStartTime}>
 				</CWeeklyCalendarHeaderDays>
-				<CWeeklyCalendarFields intervals = {this.intervals} fieldClickHandlerSet = {this.fieldClickHandlerSet} eventRepetition={3}>
+				<CWeeklyCalendarFields intervals = {this.intervals} eventRepetition={3}>
 				</CWeeklyCalendarFields>
 			</div>
 		);

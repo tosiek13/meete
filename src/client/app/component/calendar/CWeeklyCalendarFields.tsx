@@ -10,8 +10,7 @@ class CWeeklyCalendarFields extends React.Component<IWeeklyCalendarFields, {}> {
 				<CWeeklyCalendarFieldsDay
 					intervals = {intervals} 
 					dayPosition={dayPosition} 
-					eventRepetition={this.props.eventRepetition}
-					fieldClickHandlerSet = {this.props.fieldClickHandlerSet}>
+					eventRepetition={this.props.eventRepetition}>
 				</CWeeklyCalendarFieldsDay>
 			</div>
 		);

@@ -17,20 +17,17 @@ interface IWeeklyCalendarFieldProps {
       dayPosition: number, 
       hourPosition: number,
       eventRepetition: EventRepetition,
-      fieldClickHandlerSet: IWeeklyCalendarFieldHandlersSet
 }
 
 interface IWeeklyCalendarFields {
       intervals: number,
       eventRepetition: EventRepetition,
-      fieldClickHandlerSet: IWeeklyCalendarFieldHandlersSet
 }
 
 interface IWeeklyCalendarFieldsDayProps {
       intervals: number,
       dayPosition: number,
       eventRepetition: EventRepetition,
-      fieldClickHandlerSet: IWeeklyCalendarFieldHandlersSet
 }
 
 interface CWeeklyCalendarHeaderDayField {
@@ -57,12 +54,6 @@ interface IWeeklyCalendarHoursProps{
 interface IWeeklyCalendarHourFieldProps{
       startDate: Date,
       endDate: Date
-}
-
-interface IWeeklyCalendarFieldHandlersSet{
-      onMouseDown: Function;
-      onMouseUp: Function;
-      onMouseOver: Function;
 }
 
 interface IRange {

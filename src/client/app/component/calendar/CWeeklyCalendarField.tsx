@@ -3,6 +3,7 @@ import * as React from "react";
 ///<reference path='../../../../typings/meete/WeeklyCalendar.d.ts'/>
 
 import { UserPreferencesInstance } from './../../dom/UserPreferences'
+import { WeeklyCalendarFieldsStore } from './../../flux/store/WeeklyCalendarFieldsStore'
 
 class CWeeklyCalendarField extends React.Component<IWeeklyCalendarFieldProps, {}> {
       constructor(props: IWeeklyCalendarFieldProps) {
@@ -13,13 +14,13 @@ class CWeeklyCalendarField extends React.Component<IWeeklyCalendarFieldProps, {}
       }
 
       fireMouseDown() {
-            this.props.fieldClickHandlerSet.onMouseDown(this.props.dayPosition, this.props.hourPosition);
+            WeeklyCalendarFieldsStore.getInstance().mouseDown(this.props.dayPosition, this.props.hourPosition);
       }
       fireMouseUp() {
-            this.props.fieldClickHandlerSet.onMouseUp(this.props.dayPosition, this.props.hourPosition);
+            WeeklyCalendarFieldsStore.getInstance().mouseUp(this.props.dayPosition, this.props.hourPosition);
       }
       fireMouseOver() {
-            this.props.fieldClickHandlerSet.onMouseOver(this.props.dayPosition, this.props.hourPosition);
+            WeeklyCalendarFieldsStore.getInstance().mouseOver(this.props.dayPosition, this.props.hourPosition);
       }
 
       render() {
