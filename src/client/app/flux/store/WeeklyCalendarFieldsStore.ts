@@ -1,8 +1,7 @@
 import { AppDispatcher } from './../dispatcher/Dispatcher';
 import { EventEmitter, ListenerToken } from './EventEmitter';
-import { WeeklyCalendarFieldActionID } from './../action/WeeklyCalendarActionID';
-import { Dictionary } from 'typescript-collections';
 import { DTOEvent } from './../../dom/DTOEvent';
+import { ActionID } from './../action/ActionID'; 
 
 import { UWeeklyCalendar, UCalendar } from './../../utils/calendarUtils';
 
@@ -22,6 +21,11 @@ class WeeklyCalendarFieldsStore extends EventEmitter {
       constructor() {
             super();
             registerToDispatcher();
+            this.getColor = this.getColor.bind(this);
+      }
+
+      getColor(dayPosition: number, hourPosition: number): string{
+            return 'black';
       }
 
       emitChange() {
@@ -47,15 +51,15 @@ class WeeklyCalendarFieldsStore extends EventEmitter {
 function registerToDispatcher() {
       AppDispatcher.getInstance().register(function (action: WeeklyCalendarFieldAction) {
             switch (action.actionType) {
-                  case WeeklyCalendarFieldActionID.MOUSE_DOWN:
+                  case ActionID.WEEKLY_CAL__MOUSE_DOWN:
                         WeeklyCalendarFieldsStore.getInstance().mouseDown(action.payload.dayID, action.payload.hourID);
                         WeeklyCalendarFieldsStore.getInstance().emitChange();
                         break;
-                  case WeeklyCalendarFieldActionID.MOUSE_UP:
+                  case ActionID.WEEKLY_CAL__MOUSE_UP:
                         WeeklyCalendarFieldsStore.getInstance().mouseUp(action.payload.dayID, action.payload.hourID);
                         WeeklyCalendarFieldsStore.getInstance().emitChange();
                         break;
-                  case WeeklyCalendarFieldActionID.MOUSE_OVER:
+                  case ActionID.WEEKLY_CAL__MOUSE_OVER:
                         WeeklyCalendarFieldsStore.getInstance().mouseOver(action.payload.dayID, action.payload.hourID);
                         WeeklyCalendarFieldsStore.getInstance().emitChange();
                         break;

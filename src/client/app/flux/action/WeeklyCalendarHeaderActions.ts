@@ -1,10 +1,10 @@
 import { AppDispatcher } from './../dispatcher/Dispatcher';
-import { WeeklyCalendarHeaderActionID } from './WeeklyCalendarActionID'
+import { ActionID } from './ActionID';
 
 class WeeklyCalendarHeaderActions {
   public static switchWeeks(weeksAmount: number): void {
     AppDispatcher.getInstance().dispatch({
-       actionType: WeeklyCalendarHeaderActionID.SWITCH_WEEK,
+       actionType: ActionID.WEEKLY_CAL__SWITCH_WEEK,
        payload: {
          weeksAmount: weeksAmount
        }
@@ -12,4 +12,4 @@ class WeeklyCalendarHeaderActions {
   }
 }
 
-export { WeeklyCalendarHeaderActions};
+export { WeeklyCalendarHeaderActions };

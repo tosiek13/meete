@@ -1,7 +1,8 @@
 import { AppDispatcher } from './../dispatcher/Dispatcher';
 import { EventEmitter, ListenerToken } from './EventEmitter';
 import { DTOEvent } from './../../dom/DTOEvent';
-import { WeeklyCalendarHeaderActionID } from './../action/WeeklyCalendarActionID';
+import { ActionID } from './../action/ActionID'; 
+
 
 import { UWeeklyCalendar, UCalendar } from './../../utils/calendarUtils';
 
@@ -46,7 +47,7 @@ class WeeklyCalendarHeaderStore extends EventEmitter {
 function registerToDispatcher() {
       AppDispatcher.getInstance().register(function (action: WeeklyCalendarHeaderAction) {
             switch (action.actionType) {
-                  case WeeklyCalendarHeaderActionID.SWITCH_WEEK:
+                  case ActionID.WEEKLY_CAL__SWITCH_WEEK:
                         WeeklyCalendarHeaderStore.getInstance().switchWeek(action.payload.weeksAmount);
                         WeeklyCalendarHeaderStore.getInstance().emitChange();
                         break;
