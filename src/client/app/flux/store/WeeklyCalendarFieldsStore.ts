@@ -52,15 +52,16 @@ function registerToDispatcher() {
       AppDispatcher.getInstance().register(function (action: WeeklyCalendarFieldAction) {
             switch (action.actionType) {
                   case ActionID.WEEKLY_CAL__MOUSE_DOWN:
-                        WeeklyCalendarFieldsStore.getInstance().mouseDown(action.payload.dayID, action.payload.hourID);
+                         console.log("Field actino: " + new Date(action.payload.startTime) + ", " + new Date(action.payload.endTime));
+                        WeeklyCalendarFieldsStore.getInstance().mouseDown(action.payload.startTime, action.payload.endTime);
                         WeeklyCalendarFieldsStore.getInstance().emitChange();
                         break;
                   case ActionID.WEEKLY_CAL__MOUSE_UP:
-                        WeeklyCalendarFieldsStore.getInstance().mouseUp(action.payload.dayID, action.payload.hourID);
+                        WeeklyCalendarFieldsStore.getInstance().mouseUp(action.payload.startTime, action.payload.endTime);
                         WeeklyCalendarFieldsStore.getInstance().emitChange();
                         break;
                   case ActionID.WEEKLY_CAL__MOUSE_OVER:
-                        WeeklyCalendarFieldsStore.getInstance().mouseOver(action.payload.dayID, action.payload.hourID);
+                        WeeklyCalendarFieldsStore.getInstance().mouseOver(action.payload.startTime, action.payload.endTime);
                         WeeklyCalendarFieldsStore.getInstance().emitChange();
                         break;
                   default:

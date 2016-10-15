@@ -1,10 +1,10 @@
 import * as React from "react";
 
 ///<reference path='../../../../typings/meete/WeeklyCalendar.d.ts'/>
-import { CWeeklyCalendarHeaderDays } from './CWeeklyCalendarHeaderDays';
 import { CWeeklyCalendarHours } from './CWeeklyCalendarHours';
-import { CWeeklyCalendarFields } from './CWeeklyCalendarFields';
-import { UWeeklyCalendar, UCalendar, Range} from './../../utils/calendarUtils';
+import { CWeeklyCalendarDays } from './CWeeklyCalendarDays';
+import { CWeeklyCalendarDaysHeader } from './CWeeklyCalendarDaysHeader';
+import { UWeeklyCalendar, UCalendar, Range } from './../../utils/calendarUtils';
 import { DTOEvent } from './../../dom/DTOEvent';
 import { EventRepetition } from './../../dom/enums/EventRepetition';
 
@@ -33,13 +33,13 @@ class CWeeklyCalendar extends React.Component<IWeeklyCalendarProps, {}> {
 				<div className='weeklyCalendarEtiquete'>
 					Etiquete
 				</div>
-				<CWeeklyCalendarHours startTime = { this.firstDayStartTime }  intervals = {this.intervals} intervalLength = {this.intervalLength_ms}>
+				<CWeeklyCalendarHours startTime={this.firstDayStartTime} intervals={this.intervals} intervalLength={this.intervalLength_ms}>
 				</CWeeklyCalendarHours>
-				<CWeeklyCalendarHeaderDays weekStartTime = {this.weekStartTime}>
-				</CWeeklyCalendarHeaderDays>
-				<CWeeklyCalendarFields intervals = {this.intervals} eventRepetition={3}>
-				</CWeeklyCalendarFields>
-			</div>
+				<CWeeklyCalendarDaysHeader className='weeklyCalendarDaysHeader'>
+				</CWeeklyCalendarDaysHeader>
+				<CWeeklyCalendarDays className='weeklyCalendarDays'>
+				</CWeeklyCalendarDays>
+			</div >
 		);
 	}
 

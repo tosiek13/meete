@@ -6,55 +6,30 @@ import { UserPreferencesInstance } from './../../dom/UserPreferences'
 import { WeeklyCalendarFieldActions } from './../../flux/action/WeeklyCalendarFieldActions'
 import { WeeklyCalendarFieldsStore } from './../../flux/store/WeeklyCalendarFieldsStore'
 
-class CWeeklyCalendarField extends React.Component<IWeeklyCalendarFieldProps, {}> {
-      constructor(props: IWeeklyCalendarFieldProps) {
+class CWeeklyCalendarField extends React.Component<ICWeeklyCalendarFieldProps, {}> {
+      constructor(props: ICWeeklyCalendarFieldProps) {
             super(props);
             this.fireMouseDown = this.fireMouseDown.bind(this);
             this.fireMouseUp = this.fireMouseUp.bind(this);
             this.fireMouseOver = this.fireMouseOver.bind(this);
-            this.update = this.update.bind(this);
-      }
-
-      state = {
-            color: ''
-      }
-
-      componentDidMount() {
-            WeeklyCalendarFieldsStore.getInstance().addChangeListener(this.update);
       }
 
       fireMouseDown() {
-            WeeklyCalendarFieldActions.mouseDown(this.props.dayPosition, this.props.hourPosition);
+            WeeklyCalendarFieldActions.mouseDown(this.props.startTime, this.props.endTime);
       }
       fireMouseUp() {
-            WeeklyCalendarFieldActions.mouseUp(this.props.dayPosition, this.props.hourPosition);
+            WeeklyCalendarFieldActions.mouseUp(this.props.startTime, this.props.endTime);
       }
       fireMouseOver() {
-            WeeklyCalendarFieldActions.mouseOver(this.props.dayPosition, this.props.hourPosition);
-      }
-
-      update(){
-            console.log("Field Update");
-            let color: string = WeeklyCalendarFieldsStore.getInstance().getColor(this.props.dayPosition, this.props.hourPosition)
-            this.setState({
-                  color: color
-            });
+            WeeklyCalendarFieldActions.mouseOver(this.props.startTime, this.props.endTime);
       }
 
       render() {
-            //let fieldColor: string = UserPreferencesInstance.getWeeklyCalendarFieldColor(this.props.eventRepetition);
-            let fieldColor: string = this.state.color;
             return (
-                  <div
+                  <div className={this.props.className}
                         onMouseDown={this.fireMouseDown}
                         onMouseUp={this.fireMouseUp}
-                        onMouseOver={this.fireMouseOver}
-
-                        style={{
-                              backgroundColor: fieldColor,
-                        }}
-                        >
-                        .
+                        onMouseOver={this.fireMouseOver}>
                   </div>
             );
       }

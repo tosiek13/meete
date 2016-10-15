@@ -1,4 +1,4 @@
-class DTOEvent implements IEvent {
+class DTOEvent {
       id: number;
       startDate: number;
       endDate: number;

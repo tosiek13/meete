@@ -1,3 +1,13 @@
+interface WeeklyCalendarPropsAction {
+    actionType: number,
+    payload: {
+        weekStartTime: number,
+        hoursDayLength: number,
+        nodesPerHour: number,
+        startDayMilis: number
+    }
+}
+
 interface WeeklyCalendarHeaderAction {
     actionType: number,
     payload: {
@@ -8,8 +18,8 @@ interface WeeklyCalendarHeaderAction {
 interface WeeklyCalendarFieldAction {
     actionType: number,
     payload: {
-        dayID: number,
-        hourID: number
+        startTime: number,
+        endTime: number
     }
 }
 

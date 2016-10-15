@@ -1,10 +1,38 @@
 declare enum EventRepetition {
-    NO,
-    WEEKLY,
-    MONTHLY,
-    ANNUALY
+      NO,
+      WEEKLY,
+      MONTHLY,
+      ANNUALY
 }
 
+interface IClassNameProps {
+      className: string;
+}
+
+interface ICWeeklyCalendarFieldProps extends IClassNameProps {
+      startTime: number;
+      endTime: number;
+}
+
+interface ICWeeklyCalendarDayProps extends IClassNameProps {
+      dayStartTime: number
+      hoursInDay: number
+      nodesPerHour: number
+}
+
+interface ICWeeklyCalendarDayHeaderProps extends IClassNameProps {
+      dayName: string,
+      date: number,
+      month: number
+}
+
+
+
+/*STATE*/
+
+
+
+/////////
 interface IWeeklyCalendarProps {
       date: Date,
       startDay: number,
@@ -14,9 +42,8 @@ interface IWeeklyCalendarProps {
 }
 
 interface IWeeklyCalendarFieldProps {
-      dayPosition: number, 
-      hourPosition: number,
-      eventRepetition: EventRepetition,
+      startTime: number,
+      endTime: number,
 }
 
 interface IWeeklyCalendarFields {
@@ -39,19 +66,13 @@ interface IWeeklyCalendarHeaderDaysProps {
       weekStartTime: number
 }
 
-interface IWeeklyCalendarHeaderDayFieldProps{
-       dayName: string,
-       date: number,
-       month: number
-}
-
-interface IWeeklyCalendarHoursProps{
+interface IWeeklyCalendarHoursProps {
       startTime: number,
       intervals: number,
       intervalLength: number
 }
 
-interface IWeeklyCalendarHourFieldProps{
+interface IWeeklyCalendarHourFieldProps {
       startDate: Date,
       endDate: Date
 }

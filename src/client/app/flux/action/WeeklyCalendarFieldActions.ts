@@ -3,34 +3,34 @@ import { ActionID } from './ActionID';
 
 class WeeklyCalendarFieldActions {
 
-  public static mouseDown(dayID: number, hourID: number): void {
+  public static mouseDown(startTime: number, endTime: number): void {
 
     AppDispatcher.getInstance().dispatch({
       actionType: ActionID.WEEKLY_CAL__MOUSE_DOWN,
       payload: {
-        dayID: dayID,
-        hourID: hourID
+        startTime: startTime,
+        endTime: endTime
       }
     } as WeeklyCalendarFieldAction);
   }
 
-  public static mouseUp(dayID: number, hourID: number): void {
+  public static mouseUp(startTime: number, endTime: number): void {
 
     AppDispatcher.getInstance().dispatch({
       actionType: ActionID.WEEKLY_CAL__MOUSE_UP,
       payload: {
-        dayID: dayID,
-        hourID: hourID
+        startTime: startTime,
+        endTime: endTime
       }
     } as WeeklyCalendarFieldAction );
   }
 
-  public static mouseOver(dayID: number, hourID: number): void {
+  public static mouseOver(startTime: number, endTime: number): void {
     AppDispatcher.getInstance().dispatch({
       actionType: ActionID.WEEKLY_CAL__MOUSE_OVER,
       payload: {
-        dayID: dayID,
-        hourID: hourID
+        startTime: startTime,
+        endTime: endTime
       }
     } as WeeklyCalendarFieldAction );
   }
