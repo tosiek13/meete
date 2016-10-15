@@ -8,10 +8,22 @@ declare enum EventRepetition {
 interface IClassNameProps {
       className: string;
 }
+interface IStyleProps {
+      style: string;
+}
+
 
 interface ICWeeklyCalendarFieldProps extends IClassNameProps {
       startTime: number;
       endTime: number;
+      rowStart: number;
+      rowEnd: number;
+}
+
+interface ICWeeklyCalendarEventProps extends IClassNameProps {
+      event: DTOEvent;
+      rowStart: number;
+      rowEnd: number;
 }
 
 interface ICWeeklyCalendarDayProps extends IClassNameProps {

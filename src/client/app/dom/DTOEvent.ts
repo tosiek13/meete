@@ -1,12 +1,12 @@
 class DTOEvent {
       id: number;
-      startDate: number;
-      endDate: number;
+      startTime: number;
+      endTime: number;
 
-      constructor(id: number, startDate: number, endDate: number) {
+      constructor(id: number, startTime: number, endTime: number) {
             this.id = id;
-            this.startDate = startDate;
-            this.endDate = endDate;
+            this.startTime = startTime;
+            this.endTime = endTime;
       }
 }
 

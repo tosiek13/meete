@@ -25,11 +25,23 @@ class CWeeklyCalendarField extends React.Component<ICWeeklyCalendarFieldProps, {
       }
 
       render() {
+            var gridColumnStart: number;
+
+
+            var divStyle = {
+                  background: '#dadee5',
+                  zIndex: 1,
+                  gridRowStart: 'span 1',
+                  gridColumnStart: 'auto',
+            };
             return (
                   <div className={this.props.className}
                         onMouseDown={this.fireMouseDown}
                         onMouseUp={this.fireMouseUp}
-                        onMouseOver={this.fireMouseOver}>
+                        onMouseOver={this.fireMouseOver}
+                        style={
+                              divStyle
+                        }>
                   </div>
             );
       }

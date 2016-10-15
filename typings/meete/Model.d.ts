@@ -1,5 +1,5 @@
 interface DTOEvent {
       id: number;
-      startDate: number;
-      endDate: number;
+      startTime: number;
+      endTime: number;
 }

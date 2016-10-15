@@ -61,8 +61,9 @@ body{
 }
 
 .weeklyCalendarDay{
-      display: flex;
-      flex-direction: column;
+      display: grid;
+
+	grid-template-rows: repeat(40, auto);
 }
 
 .weeklyCalendarField{
@@ -92,10 +93,6 @@ body{
 .weeklyCalendarFieldsFlex{
       display: flex;
       flex-direction: row;
-}
-
-.weeklyCalendarField{
-      flex-grow: 1;
 }
 
 .flexContainer{
