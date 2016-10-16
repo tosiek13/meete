@@ -1,4 +1,4 @@
-import { AppDispatcher } from './../dispatcher/Dispatcher';
+import { WeeklyCalendarDispatcher } from './../dispatcher/WeeklyCalendarDispatcher';
 import { EventEmitter, ListenerToken } from './EventEmitter';
 import { DTOEvent } from './../../dom/DTOEvent';
 import { ActionID } from './../action/ActionID';
@@ -52,7 +52,7 @@ class WeeklyCalendarFieldsStore extends EventEmitter {
 }
 
 function registerToDispatcher() {
-      AppDispatcher.getInstance().register(function (action: WeeklyCalendarFieldAction) {
+      WeeklyCalendarDispatcher.getInstance().register(function (action: WeeklyCalendarFieldAction) {
             switch (action.actionType) {
                   case ActionID.WEEKLY_CAL__MOUSE_DOWN:
                         WeeklyCalendarFieldsStore.getInstance().mouseDown(action.payload.startTime, action.payload.endTime);

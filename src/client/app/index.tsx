@@ -11,10 +11,6 @@ class App extends React.Component<{}, {}> {
         </FCWeeklyCalendar>
       </div>
     );
-    // return (
-    //   <div>
-    //   </div>
-    // );
   }
 }
 render(<App />, document.getElementById('app'));
