@@ -25,14 +25,8 @@ class CWeeklyCalendarField extends React.Component<ICWeeklyCalendarFieldProps, {
       }
 
       render() {
-            var gridColumnStart: number;
-
-
             var divStyle = {
-                  background: '#dadee5',
-                  zIndex: 1,
-                  gridRowStart: 'span 1',
-                  gridColumnStart: 'auto',
+                  gridArea: this.props.rowStart + ' / 1 / ' + this.props.rowEnd + ' / 2',
             };
             return (
                   <div className={this.props.className}

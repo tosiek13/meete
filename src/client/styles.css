@@ -61,11 +61,22 @@ body{
 }
 
 .weeklyCalendarDay {
-      display: flex;
-      flex-direction: row;
+      display: grid;
+      grid-template-columns: auto;
+      background-color:lightgray;
 }
 
-.weeklyCalendarFieldsContainer{
+.weeklyCalendarField{
+      background: '#dadee5';
+      z-index: 1;
+}
+
+.event{
+      background-color: #444;
+      color: #fff;
+      border-radius: 15px;
+      z-index: 10;
+      pointer-events: none;
 }
 
 .weeklyCalendarField{

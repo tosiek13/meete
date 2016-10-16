@@ -24,7 +24,7 @@ class CWeeklyCalendarDay extends React.Component<ICWeeklyCalendarDayProps, {}> {
 
 	renderField(startTime: number, endTime: number, rowStart: number, rowEnd: number) {
 		return (
-			<CWeeklyCalendarField className=""
+			<CWeeklyCalendarField className="weeklyCalendarField"
 				key={startTime}
 				startTime={startTime}
 				endTime={endTime}
@@ -37,7 +37,7 @@ class CWeeklyCalendarDay extends React.Component<ICWeeklyCalendarDayProps, {}> {
 
 	renderEvent(event: DTOEvent, rowStart: number, rowEnd: number) {
 		return (
-			<CWeeklyCalendarEvent className=""
+			<CWeeklyCalendarEvent className="event"
 				key={event.id}
 				event={event}
 				rowStart={rowStart}
@@ -57,7 +57,7 @@ class CWeeklyCalendarDay extends React.Component<ICWeeklyCalendarDayProps, {}> {
 
 		var dayFields: JSX.Element[] = [];
 		let tempTime = startTime;
-		for (let i = 0; i < nodesAmount; i++) {
+		for (let i = 1; i <= nodesAmount; i++) {
 			dayFields.push(this.renderField(tempTime, tempTime + nodeLength, i, i + 1));
 			tempTime += nodeLength;
 		}
@@ -76,11 +76,8 @@ class CWeeklyCalendarDay extends React.Component<ICWeeklyCalendarDayProps, {}> {
 
 		let rowsTemplate = 'repeat(' + nodesAmount + ', auto)';
 		return (
-			<div className=''
+			<div className={this.props.className}
 				style={{
-					display: 'grid',
-					gridTemplateColumns: 'auto',
-					backgroundColor: 'rebeccapurple',
 					gridTemplateRows: rowsTemplate,
 				}}>
 				{dayFields}
