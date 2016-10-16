@@ -5,6 +5,7 @@ import { ActionID } from './../action/ActionID';
 import { EventActions } from './../../flux/action/EventActions';
 
 import { UWeeklyCalendar, UCalendar } from './../../utils/calendarUtils';
+import { UEvent } from './../../utils/UEvent';
 
 class EventsStore extends EventEmitter {
     FIELD_CHANGE_EVENT: string = "weekly_calendar_field_change_event";
@@ -60,8 +61,9 @@ class EventsStore extends EventEmitter {
         return events;
     }
 
-    createEvent(event: DTOEvent): void {
-        event.id = new Date().getTime();
+    createEvent(startTime: number, endTime: number): void {
+        let event = UEvent.createEvent(startTime, endTime);
+
         let day = new Date(event.startTime).getDate();
         let events: DTOEvent[] = this.eventsByDate[day];
         if (!events) {
@@ -77,7 +79,7 @@ class EventsStore extends EventEmitter {
     }
     mouseUp_Field(startTime: number, endTime: number) {
         if (this.eventStartTime) {
-            this.createEvent(new DTOEvent(null, this.eventStartTime, endTime));
+            this.createEvent(this.eventStartTime, endTime);
         }
     }
     mouseOver_Field(startTime: number, endTime: number) {

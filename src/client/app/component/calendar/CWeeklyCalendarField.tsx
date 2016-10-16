@@ -15,7 +15,6 @@ class CWeeklyCalendarField extends React.Component<ICWeeklyCalendarFieldProps, {
 
       fireMouseDown(event: any) {
             let mouseEvent: MouseEvent = event.nativeEvent;
-            console.log(mouseEvent);
             WeeklyCalendarFieldActions.mouseDown(this.props.startTime, this.props.endTime);
       }
       fireMouseUp() {
