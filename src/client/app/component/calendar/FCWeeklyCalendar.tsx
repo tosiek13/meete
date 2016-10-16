@@ -25,6 +25,13 @@ class FCWeeklyCalendar extends React.Component<{}, {}> {
             WeeklyCalendarHeaderStore.getInstance().addChangeListener(this.update);
       }
 
+      update(){
+            let newDate = WeeklyCalendarHeaderStore.getInstance().getPresentedWeekStartTime();
+            this.setState({
+                  date: new Date(newDate)
+            });
+      }
+
 	render() {
 		return (
                   <div className='FCWeeklyCalendar'>
@@ -40,13 +47,6 @@ class FCWeeklyCalendar extends React.Component<{}, {}> {
                   </div>
 		);
 	}
-
-      update(){
-            let newDate = WeeklyCalendarHeaderStore.getInstance().getPresentedWeekStartTime();
-            this.setState({
-                  date: new Date(newDate)
-            });
-      }
 }
 
 export { FCWeeklyCalendar };

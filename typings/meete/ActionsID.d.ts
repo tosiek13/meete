@@ -23,6 +23,13 @@ interface WeeklyCalendarFieldAction {
     }
 }
 
+interface EventAction {
+    actionType: number,
+    payload: {
+        event: DTOEvent
+    }
+}
+
 interface Action {
     actionType: number,
     payload: any

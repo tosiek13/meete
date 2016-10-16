@@ -1,7 +1,9 @@
 import { AppDispatcher } from './../dispatcher/Dispatcher';
 import { EventEmitter, ListenerToken } from './EventEmitter';
 import { DTOEvent } from './../../dom/DTOEvent';
-import { ActionID } from './../action/ActionID'; 
+import { ActionID } from './../action/ActionID';
+import { EventsStore } from './../../flux/store/EventsStore'; 
+import { EventActions } from './../../flux/action/EventActions';
 
 import { UWeeklyCalendar, UCalendar } from './../../utils/calendarUtils';
 
@@ -10,6 +12,7 @@ class WeeklyCalendarFieldsStore extends EventEmitter {
 
       static weeklyCalendarFieldStoreInstance: WeeklyCalendarFieldsStore;
       presentedWeekStartTime: number;
+      eventStartTime: number;
 
       static getInstance(): WeeklyCalendarFieldsStore {
             if (!this.weeklyCalendarFieldStoreInstance) {
@@ -21,11 +24,9 @@ class WeeklyCalendarFieldsStore extends EventEmitter {
       constructor() {
             super();
             registerToDispatcher();
-            this.getColor = this.getColor.bind(this);
-      }
-
-      getColor(dayPosition: number, hourPosition: number): string{
-            return 'black';
+            this.mouseDown = this.mouseDown.bind(this);
+            this.mouseOver = this.mouseOver.bind(this);
+            this.mouseUp = this.mouseUp.bind(this);
       }
 
       emitChange() {
@@ -37,14 +38,16 @@ class WeeklyCalendarFieldsStore extends EventEmitter {
             return new ListenerToken(this.CHANGE_EVENT, callback);
       }
 
-      mouseDown(dayPosition: number, hourPosition: number) {
-            console.log("Down");
+      mouseDown(startTime: number, endTime: number) {
+            this.eventStartTime = startTime;
       }
-      mouseUp(dayPosition: number, hourPosition: number) {
-            console.log("Up");
+      mouseUp(startTime: number, endTime: number) {
+            if(this.eventStartTime){
+                console.log("Create event " + new Date(this.eventStartTime) + ", " + new Date(endTime));
+                EventActions.createEvent(new DTOEvent(null, this.eventStartTime, endTime));
+            }
       }
-      mouseOver(dayPosition: number, hourPosition: number) {
-            console.log("Over");
+      mouseOver(startTime: number, endTime: number) {
       }
 }
 
@@ -52,7 +55,6 @@ function registerToDispatcher() {
       AppDispatcher.getInstance().register(function (action: WeeklyCalendarFieldAction) {
             switch (action.actionType) {
                   case ActionID.WEEKLY_CAL__MOUSE_DOWN:
-                         console.log("Field actino: " + new Date(action.payload.startTime) + ", " + new Date(action.payload.endTime));
                         WeeklyCalendarFieldsStore.getInstance().mouseDown(action.payload.startTime, action.payload.endTime);
                         WeeklyCalendarFieldsStore.getInstance().emitChange();
                         break;
