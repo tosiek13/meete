@@ -3,19 +3,18 @@ import * as React from "react";
 ///<reference path='../../../../typings/meete/WeeklyCalendar.d.ts'/>
 
 import { UserPreferencesInstance } from './../../dom/UserPreferences'
-import { WeeklyCalendarFieldActions } from './../../flux/action/WeeklyCalendarFieldActions'
-import { WeeklyCalendarFieldsStore } from './../../flux/store/WeeklyCalendarFieldsStore'
+import { EventActions } from './../../flux/action/EventActions';
 
 class CWeeklyCalendarEvent extends React.Component<ICWeeklyCalendarEventProps, {}> {
       constructor(props: ICWeeklyCalendarEventProps) {
             super(props);
-            // this.fireMouseDown = this.fireMouseDown.bind(this);
-            // this.fireMouseUp = this.fireMouseUp.bind(this);
-            // this.fireMouseOver = this.fireMouseOver.bind(this);
+            this.fireMouseDown = this.fireMouseDown.bind(this);
+            this.fireMouseUp = this.fireMouseUp.bind(this);
+            this.fireMouseOver = this.fireMouseOver.bind(this);
       }
 
       fireMouseDown() {
-            // WeeklyCalendarFieldActions.mouseDown(this.props.startTime, this.props.endTime);
+            EventActions.mouseDown(this.props.event);
       }
       fireMouseUp() {
             // WeeklyCalendarFieldActions.mouseUp(this.props.startTime, this.props.endTime);

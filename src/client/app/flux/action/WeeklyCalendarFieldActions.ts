@@ -1,11 +1,11 @@
-import { WeeklyCalendarDispatcher } from './../dispatcher/WeeklyCalendarDispatcher';
+import { AppDispatcher } from './../dispatcher/Dispatcher';
 import { ActionID } from './ActionID';
 
 class WeeklyCalendarFieldActions {
 
   public static mouseDown(startTime: number, endTime: number): void {
 
-    WeeklyCalendarDispatcher.getInstance().dispatch({
+    AppDispatcher.getInstance().dispatch({
       actionType: ActionID.WEEKLY_CAL__MOUSE_DOWN,
       payload: {
         startTime: startTime,
@@ -16,7 +16,7 @@ class WeeklyCalendarFieldActions {
 
   public static mouseUp(startTime: number, endTime: number): void {
 
-    WeeklyCalendarDispatcher.getInstance().dispatch({
+    AppDispatcher.getInstance().dispatch({
       actionType: ActionID.WEEKLY_CAL__MOUSE_UP,
       payload: {
         startTime: startTime,
@@ -26,7 +26,7 @@ class WeeklyCalendarFieldActions {
   }
 
   public static mouseOver(startTime: number, endTime: number): void {
-    WeeklyCalendarDispatcher.getInstance().dispatch({
+    AppDispatcher.getInstance().dispatch({
       actionType: ActionID.WEEKLY_CAL__MOUSE_OVER,
       payload: {
         startTime: startTime,

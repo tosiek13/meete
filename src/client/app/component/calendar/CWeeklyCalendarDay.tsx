@@ -20,7 +20,7 @@ class CWeeklyCalendarDay extends React.Component<ICWeeklyCalendarDayProps, {}> {
 	}
 
 	componentDidMount() {
-            EventsStore.getInstance().addChangeListener(this.update);
+            EventsStore.getInstance().addEventChangeListener(this.update);
 	}
 
 	update(){

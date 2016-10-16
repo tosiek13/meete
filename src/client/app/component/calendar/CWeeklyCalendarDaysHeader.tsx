@@ -4,7 +4,6 @@ import * as React from "react";
 import { CWeeklyCalendarDayHeader } from './CWeeklyCalendarDayHeader';
 import { WeeklyCalendarPropsStore } from './../../flux/store/WeeklyCalendarPropsStore';
 import { WeeklyCalendarHeaderStore } from './../../flux/store/WeeklyCalendarHeaderStore';
-import { WeeklyCalendarFieldsStore } from './../../flux/store/WeeklyCalendarFieldsStore';
 import { UCalendar, UWeeklyCalendar } from './../../utils/calendarUtils';
 import { WeekDays } from './../../dom/enums/Calendar';
 
@@ -50,11 +49,6 @@ class CWeeklyCalendarDaysHeader extends React.Component<IClassNameProps, {}> {
                   );
             }
 
-            /*return (
-                  <div className={this.props.className}>
-                        { daysHeader }
-                  </div>
-            );*/
             return (
                   <div className={this.props.className}>
                         { daysHeader }

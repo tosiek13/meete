@@ -3,10 +3,10 @@ import { ActionID } from './ActionID';
 
 class EventActions {
 
-  public static createEvent(event: DTOEvent): void {
+  public static mouseDown (event: DTOEvent): void {
 
     AppDispatcher.getInstance().dispatch({
-      actionType: ActionID.EVENT_ACTION_CREATE,
+      actionType: ActionID.EVENT_ACTION_MOUSE_DOWN,
       payload: {
         event: event
       }

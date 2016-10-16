@@ -4,7 +4,7 @@ import * as React from "react";
 import { CWeeklyCalendarDay } from './CWeeklyCalendarDay';
 import { WeeklyCalendarPropsStore } from './../../flux/store/WeeklyCalendarPropsStore';
 import { WeeklyCalendarHeaderStore } from './../../flux/store/WeeklyCalendarHeaderStore';
-import { WeeklyCalendarFieldsStore } from './../../flux/store/WeeklyCalendarFieldsStore';
+import { EventsStore } from './../../flux/store/EventsStore';
 import { UCalendar, UWeeklyCalendar } from './../../utils/calendarUtils';
 
 class CWeeklyCalendarDays extends React.Component<IClassNameProps, {}> {
@@ -23,7 +23,7 @@ class CWeeklyCalendarDays extends React.Component<IClassNameProps, {}> {
       componentDidMount() {
             WeeklyCalendarPropsStore.getInstance().addChangeListener(this.updateCalendatPropsChange);
             WeeklyCalendarHeaderStore.getInstance().addChangeListener(this.updateAfterWeekChange);
-            WeeklyCalendarFieldsStore.getInstance();
+            EventsStore.getInstance();
       }
 
       updateCalendatPropsChange() {
