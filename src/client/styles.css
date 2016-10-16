@@ -1,7 +1,13 @@
+/**/
+body{
+      color: black;
+      background: darkgoldenrod;
+}
+
 .weeklyCalendarGrid{
       display: grid;
       grid-template-columns: 100px auto;
-	grid-template-rows: 1% auto;
+	grid-template-rows: 1% 80%;
 }
 
 .weeklyCalendarEtiquete{
@@ -21,17 +27,60 @@
 .weeklyCalendarHeaderDays{
       /*container props*/
       display: flex;
+      flex-direction: row;
 
       /*item props*/
       grid-column-start: 2;
       grid-column-end: 3;
       grid-row-start: 1;
       grid-row-end: 2;
-      background-color: green;
+      background-color: lightblue;
 }
 
-.weeklyCalendarHeaderDay{
+/*NEW*/
+.weeklyCalendarDaysHeader{
+      display: flex;
       flex-grow: 1;
+}
+
+.weeklyCalendarDayHeader{
+      flex-grow: 1;
+}
+
+.weeklyCalendarDays{
+      display: grid;
+      grid-template-columns: repeat(7, auto);
+	grid-template-rows: auto;
+
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 2;
+      grid-row-end: 3;
+
+      background-color:lightgray;
+}
+
+.weeklyCalendarDay {
+      display: grid;
+      grid-template-columns: auto;
+      background-color:lightgray;
+}
+
+.weeklyCalendarField{
+      background: '#dadee5';
+      z-index: 1;
+}
+
+.event{
+      background-color: #444;
+      color: #fff;
+      border-radius: 15px;
+      z-index: 10;
+      pointer-events: none;
+}
+
+.weeklyCalendarField{
+       flex-grow: 1;
 }
 
 .weeklyCalendarFields{
@@ -45,7 +94,7 @@
       grid-row-start: 2;
       grid-row-end: 3;
 
-      background-color: red;
+      background-color:lightgray;
 }
 
 .weeklyCalendarFieldsDayFlex{
@@ -59,6 +108,15 @@
       flex-direction: row;
 }
 
-.weeklyCalendarField{
-      flex-grow: 1;
+.flexContainer{
+      display: flex;
+}
+
+.flexChild{
+     flex-grow: 1;
+}
+
+.flexBoth{
+     display: flex;
+     flex-grow: 1;
 }
