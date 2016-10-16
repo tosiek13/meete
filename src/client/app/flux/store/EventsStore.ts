@@ -1,12 +1,15 @@
 import { AppDispatcher } from './../dispatcher/Dispatcher';
 import { EventEmitter, ListenerToken } from './EventEmitter';
 import { DTOEvent } from './../../dom/DTOEvent';
-import { ActionID } from './../action/ActionID'; 
+import { ActionID } from './../action/ActionID';
 
 import { UWeeklyCalendar, UCalendar } from './../../utils/calendarUtils';
 
 class EventsStore extends EventEmitter {
       CHANGE_EVENT: string = "events_modyfication";
+
+      eventsByDate: { [dayInMonth: number]: DTOEvent[]; } = {
+      }
 
       static eventsStoreInstance: EventsStore;
       presentedWeekStartTime: number;
@@ -22,17 +25,31 @@ class EventsStore extends EventEmitter {
             super();
             registerToDispatcher();
             this.getUserEvents = this.getUserEvents.bind(this);
+            this.createEvent = this.createEvent.bind(this);
       }
 
-      /**/
-      getUserEvents(dayTime: number): DTOEvent[]{
+      /*returns events for specified by dayTime day*/
+      getUserEvents(date: Date): DTOEvent[] {
+            let events: DTOEvent[] = this.eventsByDate[date.getDate()];
+            if (!events) {
+                  events = [];
+            }
+            return events;
+      }
 
-            return [ 
-                  new DTOEvent(1, dayTime, dayTime + UCalendar.getMilisecondsInHour(2))
-                  ]
+      createEvent(event: DTOEvent): void {
+            event.id = new Date().getTime();
+            let day = new Date(event.startTime).getDate();
+            let events: DTOEvent[] = this.eventsByDate[day];
+            if (!events) {
+                  events = [];
+            }
+            events.push(event);
+            this.eventsByDate[day] = events;
       }
 
       emitChange() {
+            console.log("Emit")
             this.emit(this.CHANGE_EVENT);
       }
 
@@ -53,23 +70,15 @@ class EventsStore extends EventEmitter {
 }
 
 function registerToDispatcher() {
-      /*AppDispatcher.getInstance().register(function (action: WeeklyCalendarFieldAction) {
+      AppDispatcher.getInstance().register(function (action: EventAction) {
             switch (action.actionType) {
-                  case ActionID.WEEKLY_CAL__MOUSE_DOWN:
-                        EventsStore.getInstance().mouseDown(action.payload.startTime, action.payload.endTime);
-                        EventsStore.getInstance().emitChange();
-                        break;
-                  case ActionID.WEEKLY_CAL__MOUSE_UP:
-                        EventsStore.getInstance().mouseUp(action.payload.startTime, action.payload.endTime);
-                        EventsStore.getInstance().emitChange();
-                        break;
-                  case ActionID.WEEKLY_CAL__MOUSE_OVER:
-                        EventsStore.getInstance().mouseOver(action.payload.startTime, action.payload.endTime);
+                  case ActionID.EVENT_ACTION_CREATE:
+                        EventsStore.getInstance().createEvent(action.payload.event);
                         EventsStore.getInstance().emitChange();
                         break;
                   default:
             }
-      });*/
+      });
 }
 
 export { EventsStore };

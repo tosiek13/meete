@@ -12,15 +12,22 @@ import { DTOEvent } from './../../dom/DTOEvent';
 class CWeeklyCalendarDay extends React.Component<ICWeeklyCalendarDayProps, {}> {
 	constructor(props: ICWeeklyCalendarDayProps) {
 		super(props);
+		this.update = this.update.bind(this);
 	}
 
 	state = {
-		events: EventsStore.getInstance().getUserEvents(this.props.dayStartTime)
+		events: EventsStore.getInstance().getUserEvents(new Date(this.props.dayStartTime))
 	}
 
 	componentDidMount() {
-		//EventsStore.getInstance();
+            EventsStore.getInstance().addChangeListener(this.update);
 	}
+
+	update(){
+            this.setState({
+                  events: EventsStore.getInstance().getUserEvents(new Date(this.props.dayStartTime))
+            });
+      }
 
 	renderField(startTime: number, endTime: number, rowStart: number, rowEnd: number) {
 		return (
