@@ -22,7 +22,7 @@ class CWeeklyCalendarDay extends React.Component<ICWeeklyCalendarDayProps, {}> {
 		//EventsStore.getInstance();
 	}
 
-	renderField(startTime: number, endTime: number, rowStart:number, rowEnd: number ) {
+	renderField(startTime: number, endTime: number, rowStart: number, rowEnd: number) {
 		return (
 			<CWeeklyCalendarField className=""
 				key={startTime}
@@ -58,28 +58,31 @@ class CWeeklyCalendarDay extends React.Component<ICWeeklyCalendarDayProps, {}> {
 		var dayFields: JSX.Element[] = [];
 		let tempTime = startTime;
 		for (let i = 0; i < nodesAmount; i++) {
-			dayFields.push(this.renderField(tempTime, tempTime + nodeLength, i, i+1));
+			dayFields.push(this.renderField(tempTime, tempTime + nodeLength, i, i + 1));
 			tempTime += nodeLength;
 		}
 
 		var events: JSX.Element[] = [];
-		for(let event of this.state.events){
+		for (let event of this.state.events) {
 			let timeFromEventStartToDayStart = event.startTime - startTime;
-			let timeFromEventEndToDayStart = event.startTime - startTime;
+			let timeFromEventEndToDayStart = event.endTime - startTime;
 			let milisInHour = UCalendar.getMilisecondsInHour(1);
-			let gridStart = Math.round( timeFromEventStartToDayStart / milisInHour * nodesPerHour );
-			let gridEnd = Math.round( timeFromEventStartToDayStart / milisInHour * nodesPerHour );
+			let gridStart = Math.round(timeFromEventStartToDayStart / milisInHour * nodesPerHour);
+			let gridEnd = Math.round(timeFromEventEndToDayStart / milisInHour * nodesPerHour);
 
-			events.push(this.renderEvent(event, gridStart, gridEnd));
+			events.push(this.renderEvent(event, gridStart + 1, gridEnd + 1));
 		}
 
 
+		let rowsTemplate = 'repeat(' + nodesAmount + ', auto)';
 		return (
-			<div className={this.props.className}
-				style={{ 
-					display: 'grid', 
-      				gridTemplateColumns: 'auto',
-					gridTemplateRows: 'repeat(40, auto)'}}>
+			<div className=''
+				style={{
+					display: 'grid',
+					gridTemplateColumns: 'auto',
+					backgroundColor: 'rebeccapurple',
+					gridTemplateRows: rowsTemplate,
+				}}>
 				{dayFields}
 				{events}
 			</div>

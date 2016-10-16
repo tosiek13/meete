@@ -43,7 +43,7 @@ class CWeeklyCalendarDays extends React.Component<IClassNameProps, {}> {
 
       renderHourFields(dayStartTime: number, hoursInDay: number, nodesPerHour: number) {
             return (
-                  <CWeeklyCalendarDay className="weeklyCalendarDay"
+                  <CWeeklyCalendarDay className=""
                         key={dayStartTime}
                         dayStartTime={dayStartTime}
                         hoursInDay={hoursInDay}

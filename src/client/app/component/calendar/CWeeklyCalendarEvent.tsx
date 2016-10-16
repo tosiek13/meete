@@ -25,14 +25,11 @@ class CWeeklyCalendarEvent extends React.Component<ICWeeklyCalendarEventProps, {
       }
 
       render() {
-            var gridColumnStart: number;
-
+            let gridArea = this.props.rowStart + ' / 1 / ' + this.props.rowEnd + ' / 2';
+            console.log(gridArea);
             var divStyle = {
                   background: '#20324f',
-                  gridRowStart: 1,
-                  gridRowEnd: 1,
-                  gridColumnStart: 'auto',
-                  zIndex: 10
+                  gridArea: gridArea,
             };
             return (
                   <div className={this.props.className}
@@ -42,6 +39,7 @@ class CWeeklyCalendarEvent extends React.Component<ICWeeklyCalendarEventProps, {
                         style={
                               divStyle
                         }>
+                        Event
                   </div>
             );
       }
