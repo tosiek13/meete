@@ -37,16 +37,6 @@ body{
       background-color: lightblue;
 }
 
-/*NEW*/
-.weeklyCalendarDaysHeader{
-      display: flex;
-      flex-grow: 1;
-}
-
-.weeklyCalendarDayHeader{
-      flex-grow: 1;
-}
-
 .weeklyCalendarDays{
       display: grid;
       grid-template-columns: repeat(7, auto);
@@ -58,6 +48,16 @@ body{
       grid-row-end: 3;
 
       background-color:lightgray;
+}
+
+/*NEW*/
+.weeklyCalendarDaysHeader{
+      display: flex;
+      flex-grow: 1;
+}
+
+.weeklyCalendarDayHeader{
+      flex-grow: 1;
 }
 
 .weeklyCalendarDay {
@@ -74,7 +74,6 @@ body{
 .event{
       background-color: #444;
       color: #fff;
-      border-radius: 15px;
       z-index: 10;
       pointer-events: none;
 }
@@ -95,28 +94,4 @@ body{
       grid-row-end: 3;
 
       background-color:lightgray;
-}
-
-.weeklyCalendarFieldsDayFlex{
-      /*container props*/
-      display: flex;
-      flex-direction: column;
-}
-
-.weeklyCalendarFieldsFlex{
-      display: flex;
-      flex-direction: row;
-}
-
-.flexContainer{
-      display: flex;
-}
-
-.flexChild{
-     flex-grow: 1;
-}
-
-.flexBoth{
-     display: flex;
-     flex-grow: 1;
 }

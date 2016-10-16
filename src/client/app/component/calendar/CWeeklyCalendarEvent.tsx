@@ -36,7 +36,6 @@ class CWeeklyCalendarEvent extends React.Component<ICWeeklyCalendarEventProps, {
                         style={
                               divStyle
                         }>
-                        Event
                   </div>
             );
       }
