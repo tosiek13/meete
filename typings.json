@@ -2,7 +2,8 @@
   "globalDependencies": {
     "react": "registry:dt/react#0.14.0+20160829191040",
     "react-bootstrap": "registry:dt/react-bootstrap#0.0.0+20160806072414",
-    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040"
+    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
+    "whatwg-fetch": "registry:dt/whatwg-fetch#0.0.0+20161004182750"
   },
   "dependencies": {
     "flux": "registry:npm/flux#2.1.1+20160601175240",

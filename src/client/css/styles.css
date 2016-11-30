@@ -69,14 +69,27 @@ body{
 .weeklyCalendarField{
       background: '#dadee5';
       z-index: 1;
+      border: 1px solid black;
 }
 
 .event{
+      /*display: flex;
+      flex-wrap: wrap;*/
+
       background-color: #444;
       color: #fff;
       z-index: 10;
       pointer-events: all;
       border-radius: 15px;
+}
+
+.eventHours{
+      position: absolute;
+}
+
+.eventTime{
+    /*position: absolute;*/
+    flex-grow: 0;
 }
 
 .weeklyCalendarField{

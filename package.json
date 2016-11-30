@@ -5,13 +5,30 @@
   "main": "index.js",
   "scripts": {
     "init": "typings install && npm install",
-    "dev": "webpack -d --watch",
-    "build": "webpack -p"
+    "freePort8080": "FOR /F \"tokens=5 delims= \" %P IN ('netstat -a -n -o ^| findstr ]:8080.*LISTENING') DO TaskKill.exe  /F /PID %P",
+    "mockBackgroundServer": "npm run freePort8080 && START /B node ./src/server_mock/run.js > src/server_mock/server.log",
+    "serverMock": "START /B node ./src/server_mock/run.js > src/server_mock/server.log",
+    "webpack": "webpack -d --watch",
+    "dev": "npm run webpack",
+    "cdev": "npm run mockBackgroundServer && npm run dev",
+    "mdev": "npm run serverMock && npm run dev",
+    "server": "npm run mockBackgroundServer",
+    "build": "webpack -p",
+    "deployDrop": "del c:\\Apache\\apache-tomcat-7.0.62\\webapps\\meete /q /s",
+    "deployCopy": "xcopy src\\client\\public c:\\Apache\\apache-tomcat-7.0.62\\webapps\\meete\\public\\ && xcopy src\\client\\assets c:\\Apache\\apache-tomcat-7.0.62\\webapps\\meete\\assets && xcopy src\\client\\css c:\\Apache\\apache-tomcat-7.0.62\\webapps\\meete\\css && copy src\\client\\index.html c:\\Apache\\apache-tomcat-7.0.62\\webapps\\meete",
+    "tomcatStartup": "c:\\Apache\\apache-tomcat-7.0.62\\bin\\startup.bat",
+    "tomcatShutdown": "c:\\Apache\\apache-tomcat-7.0.62\\bin\\shutdown.bat",
+    "tomcatRestart": "npm run tomcatShutdown && npm run tomcatStartup",
+    "deploy": "npm run deployDrop && npm run deployCopy && npm run tomcatStartup",
+    "redeploy": "npm run deployDrop && npm run deployCopy"
   },
   "author": "tochur",
   "license": "ISC",
   "dependencies": {
+    "@types/es6-promise": "0.0.32",
+    "es6-promise": "^4.0.5",
     "flux": "^2.1.1",
+    "jquery": "^3.1.1",
     "react": "^15.3.1",
     "react-bootstrap": "^0.30.3",
     "react-dom": "^15.3.1",
@@ -21,6 +38,7 @@
     "webpack": "^1.13.2"
   },
   "devDependencies": {
+    "@types/jquery": "^2.0.33",
     "source-map-loader": "^0.1.5",
     "ts-loader": "^0.8.2"
   }

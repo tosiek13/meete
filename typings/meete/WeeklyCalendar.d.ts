@@ -38,6 +38,10 @@ interface ICWeeklyCalendarDayHeaderProps extends IClassNameProps {
       month: number
 }
 
+interface ICLoginFormProps extends IClassNameProps{
+      
+}
+
 
 
 /*STATE*/
@@ -85,8 +89,8 @@ interface IWeeklyCalendarHoursProps {
 }
 
 interface IWeeklyCalendarHourFieldProps {
-      startDate: Date,
-      endDate: Date
+      startTime: number,
+      endTime: number
 }
 
 interface IRange {

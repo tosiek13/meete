@@ -5,10 +5,10 @@ import { CWeeklyCalendarHourField } from './CWeeklyCalendarHourField';
 import { UCalendar } from './../../utils/calendarUtils';
 
 class CWeeklyCalendarHours extends React.Component<IWeeklyCalendarHoursProps, {}> {
-      renderHour(startDate: Date, endDate: Date, position: number) {
+      renderHour(startTime: number, endTime: number, position: number) {
 		return (
 			<div key={position}>
-				<CWeeklyCalendarHourField startDate={startDate} endDate={endDate} >
+				<CWeeklyCalendarHourField startTime={startTime} endTime={endTime} >
 				</CWeeklyCalendarHourField>
 			</div>
 		);
@@ -24,7 +24,7 @@ class CWeeklyCalendarHours extends React.Component<IWeeklyCalendarHoursProps, {}
                   let startDateMilis = startTime + UCalendar.getMilisecondsInHour(i * intervalLength);
                   let endDateMilis = startDateMilis + UCalendar.getMilisecondsInHour(intervalLength);
 
-                  hours.push(this.renderHour(new Date(startDateMilis), new Date(endDateMilis), i));
+                  hours.push(this.renderHour(startDateMilis,endDateMilis, i));
 		}
 
 

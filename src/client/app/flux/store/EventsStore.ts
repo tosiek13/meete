@@ -3,6 +3,7 @@ import { EventEmitter, ListenerToken } from './EventEmitter';
 import { DTOEvent } from './../../dom/DTOEvent';
 import { ActionID } from './../action/ActionID';
 import { EventActions } from './../../flux/action/EventActions';
+import { EventsSync } from './../../engine/EventsSync';
 
 import { UWeeklyCalendar, UCalendar } from './../../utils/calendarUtils';
 import { UEvent } from './../../utils/UEvent';
@@ -71,6 +72,11 @@ class EventsStore extends EventEmitter {
         }
         events.push(event);
         this.eventsByDate[day] = events;
+        EventsSync.postStringWithJQuerry();
+        EventsSync.postUserEvent(event);
+        // EventsSync.getUserEvents(20, 100).then(param => { console.log(param)});
+        //EventsSync.postString("Mystring");
+        //EventsSync.addEventFetch(event);
     }
 
     mouseDown_Field(startTime: number, endTime: number) {
@@ -95,7 +101,7 @@ class EventsStore extends EventEmitter {
 }
 
 function registerToDispatcher() {
-    AppDispatcher.getInstance().register(function(action: EventAction) {
+    AppDispatcher.getInstance().register(function (action: EventAction) {
         switch (action.actionType) {
             case ActionID.EVENT_ACTION_MOUSE_DOWN:
                 EventsStore.getInstance().mouseDown_Event(action.payload.event);
@@ -105,7 +111,7 @@ function registerToDispatcher() {
         }
     });
 
-    AppDispatcher.getInstance().register(function(action: WeeklyCalendarFieldAction) {
+    AppDispatcher.getInstance().register(function (action: WeeklyCalendarFieldAction) {
         switch (action.actionType) {
             case ActionID.WEEKLY_CAL__MOUSE_DOWN:
                 EventsStore.getInstance().mouseDown_Field(action.payload.startTime, action.payload.endTime);

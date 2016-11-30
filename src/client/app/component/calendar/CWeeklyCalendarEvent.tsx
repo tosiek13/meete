@@ -24,9 +24,11 @@ class CWeeklyCalendarEvent extends React.Component<ICWeeklyCalendarEventProps, {
       }
 
       render() {
-            var divStyle = {
+            let divStyle = {
                   gridArea: this.props.rowStart + ' / 1 / ' + this.props.rowEnd + ' / 2',
             };
+            let startDate = new Date(this.props.event.startTime);
+            let endDate = new Date(this.props.event.endTime);
             return (
                   <div className={this.props.className}
                         onMouseDown={this.fireMouseDown}
@@ -35,6 +37,9 @@ class CWeeklyCalendarEvent extends React.Component<ICWeeklyCalendarEventProps, {
                         style={
                               divStyle
                         }>
+                        <div className="eventHours">
+                              {startDate.getHours()}:{startDate.getMinutes()} - {endDate.getHours()}:{endDate.getMinutes()}
+                        </div>
                   </div>
             );
       }

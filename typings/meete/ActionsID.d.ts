@@ -30,6 +30,14 @@ interface EventAction {
     }
 }
 
+interface AuthenticationAction {
+    actionType: number,
+    payload:{
+        username: string,
+        password: string
+    }
+}
+
 interface Action {
     actionType: number,
     payload: any
